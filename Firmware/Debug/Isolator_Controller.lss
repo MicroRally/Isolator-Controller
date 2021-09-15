@@ -1,0 +1,2878 @@
+
+Isolator_Controller.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  000012a0  00001334  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000012a0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000067  00800102  00800102  00001336  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00001336  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00001368  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000260  00000000  00000000  000013a4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001f75  00000000  00000000  00001604  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000cfc  00000000  00000000  00003579  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00001b5e  00000000  00000000  00004275  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000004c0  00000000  00000000  00005dd4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000a25  00000000  00000000  00006294  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000e42  00000000  00000000  00006cb9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000200  00000000  00000000  00007afb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	13 c0       	rjmp	.+38     	; 0x28 <__ctors_end>
+       2:	2d c0       	rjmp	.+90     	; 0x5e <__bad_interrupt>
+       4:	2c c0       	rjmp	.+88     	; 0x5e <__bad_interrupt>
+       6:	2b c0       	rjmp	.+86     	; 0x5e <__bad_interrupt>
+       8:	2a c0       	rjmp	.+84     	; 0x5e <__bad_interrupt>
+       a:	29 c0       	rjmp	.+82     	; 0x5e <__bad_interrupt>
+       c:	28 c0       	rjmp	.+80     	; 0x5e <__bad_interrupt>
+       e:	27 c0       	rjmp	.+78     	; 0x5e <__bad_interrupt>
+      10:	26 c0       	rjmp	.+76     	; 0x5e <__bad_interrupt>
+      12:	25 c0       	rjmp	.+74     	; 0x5e <__bad_interrupt>
+      14:	24 c0       	rjmp	.+72     	; 0x5e <__bad_interrupt>
+      16:	23 c0       	rjmp	.+70     	; 0x5e <__bad_interrupt>
+      18:	22 c0       	rjmp	.+68     	; 0x5e <__bad_interrupt>
+      1a:	21 c0       	rjmp	.+66     	; 0x5e <__bad_interrupt>
+      1c:	20 c0       	rjmp	.+64     	; 0x5e <__bad_interrupt>
+      1e:	1f c0       	rjmp	.+62     	; 0x5e <__bad_interrupt>
+      20:	1e c0       	rjmp	.+60     	; 0x5e <__bad_interrupt>
+      22:	1d c0       	rjmp	.+58     	; 0x5e <__bad_interrupt>
+      24:	1c c0       	rjmp	.+56     	; 0x5e <__bad_interrupt>
+      26:	1b c0       	rjmp	.+54     	; 0x5e <__bad_interrupt>
+
+00000028 <__ctors_end>:
+      28:	11 24       	eor	r1, r1
+      2a:	1f be       	out	0x3f, r1	; 63
+      2c:	cf ef       	ldi	r28, 0xFF	; 255
+      2e:	d2 e0       	ldi	r29, 0x02	; 2
+      30:	de bf       	out	0x3e, r29	; 62
+      32:	cd bf       	out	0x3d, r28	; 61
+
+00000034 <__do_copy_data>:
+      34:	11 e0       	ldi	r17, 0x01	; 1
+      36:	a0 e0       	ldi	r26, 0x00	; 0
+      38:	b1 e0       	ldi	r27, 0x01	; 1
+      3a:	e0 ea       	ldi	r30, 0xA0	; 160
+      3c:	f2 e1       	ldi	r31, 0x12	; 18
+      3e:	02 c0       	rjmp	.+4      	; 0x44 <__EEPROM_REGION_LENGTH__+0x4>
+      40:	05 90       	lpm	r0, Z+
+      42:	0d 92       	st	X+, r0
+      44:	a2 30       	cpi	r26, 0x02	; 2
+      46:	b1 07       	cpc	r27, r17
+      48:	d9 f7       	brne	.-10     	; 0x40 <__EEPROM_REGION_LENGTH__>
+
+0000004a <__do_clear_bss>:
+      4a:	21 e0       	ldi	r18, 0x01	; 1
+      4c:	a2 e0       	ldi	r26, 0x02	; 2
+      4e:	b1 e0       	ldi	r27, 0x01	; 1
+      50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+      52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+      54:	a9 36       	cpi	r26, 0x69	; 105
+      56:	b2 07       	cpc	r27, r18
+      58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+      5a:	0f d8       	rcall	.-4066   	; 0xfffff07a <__eeprom_end+0xff7ef07a>
+      5c:	1f c9       	rjmp	.-3522   	; 0xfffff29c <__eeprom_end+0xff7ef29c>
+
+0000005e <__bad_interrupt>:
+      5e:	d0 cf       	rjmp	.-96     	; 0x0 <__vectors>
+
+00000060 <ADCDRV_Init>:
+	//wait to finish
+	while(ADCSRA&0x40);
+	//Disable ADC
+	ADCSRA &= ~0x80;
+	//Disable ADC power
+	PRR |= 0x01;
+      60:	e4 e6       	ldi	r30, 0x64	; 100
+      62:	f0 e0       	ldi	r31, 0x00	; 0
+      64:	90 81       	ld	r25, Z
+      66:	9e 7f       	andi	r25, 0xFE	; 254
+      68:	90 83       	st	Z, r25
+      6a:	92 b3       	in	r25, 0x12	; 18
+      6c:	94 60       	ori	r25, 0x04	; 4
+      6e:	92 bb       	out	0x12, r25	; 18
+      70:	ee e7       	ldi	r30, 0x7E	; 126
+      72:	f0 e0       	ldi	r31, 0x00	; 0
+      74:	90 81       	ld	r25, Z
+      76:	9f 60       	ori	r25, 0x0F	; 15
+      78:	90 83       	st	Z, r25
+      7a:	90 e4       	ldi	r25, 0x40	; 64
+      7c:	90 93 7c 00 	sts	0x007C, r25	; 0x80007c <__TEXT_REGION_LENGTH__+0x7fe07c>
+      80:	93 e0       	ldi	r25, 0x03	; 3
+      82:	90 93 7a 00 	sts	0x007A, r25	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+      86:	10 92 7b 00 	sts	0x007B, r1	; 0x80007b <__TEXT_REGION_LENGTH__+0x7fe07b>
+      8a:	88 23       	and	r24, r24
+      8c:	31 f0       	breq	.+12     	; 0x9a <ADCDRV_Init+0x3a>
+      8e:	ea e7       	ldi	r30, 0x7A	; 122
+      90:	f0 e0       	ldi	r31, 0x00	; 0
+      92:	80 81       	ld	r24, Z
+      94:	80 68       	ori	r24, 0x80	; 128
+      96:	80 83       	st	Z, r24
+      98:	08 95       	ret
+      9a:	e4 e6       	ldi	r30, 0x64	; 100
+      9c:	f0 e0       	ldi	r31, 0x00	; 0
+      9e:	80 81       	ld	r24, Z
+      a0:	81 60       	ori	r24, 0x01	; 1
+      a2:	80 83       	st	Z, r24
+      a4:	08 95       	ret
+
+000000a6 <ADCDRV_MeasureAll>:
+ * @brief ADC measurement processing
+ */
+void ADCDRV_MeasureAll(void)
+{
+	//check if ADC is enabled
+	if((PRR&0x01)||(!(ADCSRA&0x80))) return;
+      a6:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <__TEXT_REGION_LENGTH__+0x7fe064>
+      aa:	80 fd       	sbrc	r24, 0
+      ac:	68 c0       	rjmp	.+208    	; 0x17e <ADCDRV_MeasureAll+0xd8>
+      ae:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+      b2:	88 23       	and	r24, r24
+      b4:	0c f0       	brlt	.+2      	; 0xb8 <ADCDRV_MeasureAll+0x12>
+      b6:	63 c0       	rjmp	.+198    	; 0x17e <ADCDRV_MeasureAll+0xd8>
+	
+	ADMUX &= ~0x0F;
+      b8:	ec e7       	ldi	r30, 0x7C	; 124
+      ba:	f0 e0       	ldi	r31, 0x00	; 0
+      bc:	80 81       	ld	r24, Z
+      be:	80 7f       	andi	r24, 0xF0	; 240
+      c0:	80 83       	st	Z, r24
+	ADMUX |= 0x00;
+      c2:	80 81       	ld	r24, Z
+      c4:	80 83       	st	Z, r24
+	ADCSRA |= 0x40;
+      c6:	ea e7       	ldi	r30, 0x7A	; 122
+      c8:	f0 e0       	ldi	r31, 0x00	; 0
+      ca:	80 81       	ld	r24, Z
+      cc:	80 64       	ori	r24, 0x40	; 64
+      ce:	80 83       	st	Z, r24
+	while(ADCSRA&0x40); //wait to finish
+      d0:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+      d4:	86 fd       	sbrc	r24, 6
+      d6:	fc cf       	rjmp	.-8      	; 0xd0 <ADCDRV_MeasureAll+0x2a>
+	bat_mon = ADC;
+      d8:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7fe078>
+      dc:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7fe079>
+      e0:	90 93 09 01 	sts	0x0109, r25	; 0x800109 <bat_mon+0x1>
+      e4:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <bat_mon>
+	
+	ADMUX &= ~0x0F;
+      e8:	ec e7       	ldi	r30, 0x7C	; 124
+      ea:	f0 e0       	ldi	r31, 0x00	; 0
+      ec:	80 81       	ld	r24, Z
+      ee:	80 7f       	andi	r24, 0xF0	; 240
+      f0:	80 83       	st	Z, r24
+	ADMUX |= 0x01;
+      f2:	80 81       	ld	r24, Z
+      f4:	81 60       	ori	r24, 0x01	; 1
+      f6:	80 83       	st	Z, r24
+	ADCSRA |= 0x40;
+      f8:	ea e7       	ldi	r30, 0x7A	; 122
+      fa:	f0 e0       	ldi	r31, 0x00	; 0
+      fc:	80 81       	ld	r24, Z
+      fe:	80 64       	ori	r24, 0x40	; 64
+     100:	80 83       	st	Z, r24
+	while(ADCSRA&0x40); //wait to finish
+     102:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+     106:	86 fd       	sbrc	r24, 6
+     108:	fc cf       	rjmp	.-8      	; 0x102 <ADCDRV_MeasureAll+0x5c>
+	isol_mon = ADC;
+     10a:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7fe078>
+     10e:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7fe079>
+     112:	90 93 07 01 	sts	0x0107, r25	; 0x800107 <isol_mon+0x1>
+     116:	80 93 06 01 	sts	0x0106, r24	; 0x800106 <isol_mon>
+	
+	ADMUX &= ~0x0F;
+     11a:	ec e7       	ldi	r30, 0x7C	; 124
+     11c:	f0 e0       	ldi	r31, 0x00	; 0
+     11e:	80 81       	ld	r24, Z
+     120:	80 7f       	andi	r24, 0xF0	; 240
+     122:	80 83       	st	Z, r24
+	ADMUX |= 0x02;
+     124:	80 81       	ld	r24, Z
+     126:	82 60       	ori	r24, 0x02	; 2
+     128:	80 83       	st	Z, r24
+	ADCSRA |= 0x40;
+     12a:	ea e7       	ldi	r30, 0x7A	; 122
+     12c:	f0 e0       	ldi	r31, 0x00	; 0
+     12e:	80 81       	ld	r24, Z
+     130:	80 64       	ori	r24, 0x40	; 64
+     132:	80 83       	st	Z, r24
+	while(ADCSRA&0x40); //wait to finish
+     134:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+     138:	86 fd       	sbrc	r24, 6
+     13a:	fc cf       	rjmp	.-8      	; 0x134 <ADCDRV_MeasureAll+0x8e>
+	ign_mon = ADC;
+     13c:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7fe078>
+     140:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7fe079>
+     144:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <ign_mon+0x1>
+     148:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <ign_mon>
+	
+	ADMUX &= ~0x0F;
+     14c:	ec e7       	ldi	r30, 0x7C	; 124
+     14e:	f0 e0       	ldi	r31, 0x00	; 0
+     150:	80 81       	ld	r24, Z
+     152:	80 7f       	andi	r24, 0xF0	; 240
+     154:	80 83       	st	Z, r24
+	ADMUX |= 0x03;
+     156:	80 81       	ld	r24, Z
+     158:	83 60       	ori	r24, 0x03	; 3
+     15a:	80 83       	st	Z, r24
+	ADCSRA |= 0x40;
+     15c:	ea e7       	ldi	r30, 0x7A	; 122
+     15e:	f0 e0       	ldi	r31, 0x00	; 0
+     160:	80 81       	ld	r24, Z
+     162:	80 64       	ori	r24, 0x40	; 64
+     164:	80 83       	st	Z, r24
+	while(ADCSRA&0x40); //wait to finish
+     166:	80 91 7a 00 	lds	r24, 0x007A	; 0x80007a <__TEXT_REGION_LENGTH__+0x7fe07a>
+     16a:	86 fd       	sbrc	r24, 6
+     16c:	fc cf       	rjmp	.-8      	; 0x166 <ADCDRV_MeasureAll+0xc0>
+	alt_mon = ADC;
+     16e:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7fe078>
+     172:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7fe079>
+     176:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <__data_end+0x1>
+     17a:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__data_end>
+     17e:	08 95       	ret
+
+00000180 <ADCDRV_GetValue>:
+ * @return ADC channel value in mV
+ */
+uint16_t ADCDRV_GetValue(uint8_t ch)
+{
+	//convert values to mV return
+	switch(ch)
+     180:	81 30       	cpi	r24, 0x01	; 1
+     182:	b1 f0       	breq	.+44     	; 0x1b0 <ADCDRV_GetValue+0x30>
+     184:	28 f0       	brcs	.+10     	; 0x190 <ADCDRV_GetValue+0x10>
+     186:	82 30       	cpi	r24, 0x02	; 2
+     188:	19 f1       	breq	.+70     	; 0x1d0 <ADCDRV_GetValue+0x50>
+     18a:	83 30       	cpi	r24, 0x03	; 3
+     18c:	89 f1       	breq	.+98     	; 0x1f0 <ADCDRV_GetValue+0x70>
+     18e:	40 c0       	rjmp	.+128    	; 0x210 <__DATA_REGION_LENGTH__+0x10>
+	{
+		case 0:
+		return bat_mon*20;
+     190:	80 91 08 01 	lds	r24, 0x0108	; 0x800108 <bat_mon>
+     194:	90 91 09 01 	lds	r25, 0x0109	; 0x800109 <bat_mon+0x1>
+     198:	9c 01       	movw	r18, r24
+     19a:	22 0f       	add	r18, r18
+     19c:	33 1f       	adc	r19, r19
+     19e:	22 0f       	add	r18, r18
+     1a0:	33 1f       	adc	r19, r19
+     1a2:	82 0f       	add	r24, r18
+     1a4:	93 1f       	adc	r25, r19
+     1a6:	88 0f       	add	r24, r24
+     1a8:	99 1f       	adc	r25, r25
+     1aa:	88 0f       	add	r24, r24
+     1ac:	99 1f       	adc	r25, r25
+     1ae:	08 95       	ret
+		
+		case 1:
+		return isol_mon*20;
+     1b0:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <isol_mon>
+     1b4:	90 91 07 01 	lds	r25, 0x0107	; 0x800107 <isol_mon+0x1>
+     1b8:	9c 01       	movw	r18, r24
+     1ba:	22 0f       	add	r18, r18
+     1bc:	33 1f       	adc	r19, r19
+     1be:	22 0f       	add	r18, r18
+     1c0:	33 1f       	adc	r19, r19
+     1c2:	82 0f       	add	r24, r18
+     1c4:	93 1f       	adc	r25, r19
+     1c6:	88 0f       	add	r24, r24
+     1c8:	99 1f       	adc	r25, r25
+     1ca:	88 0f       	add	r24, r24
+     1cc:	99 1f       	adc	r25, r25
+     1ce:	08 95       	ret
+		
+		case 2:
+		return ign_mon*20;
+     1d0:	80 91 04 01 	lds	r24, 0x0104	; 0x800104 <ign_mon>
+     1d4:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <ign_mon+0x1>
+     1d8:	9c 01       	movw	r18, r24
+     1da:	22 0f       	add	r18, r18
+     1dc:	33 1f       	adc	r19, r19
+     1de:	22 0f       	add	r18, r18
+     1e0:	33 1f       	adc	r19, r19
+     1e2:	82 0f       	add	r24, r18
+     1e4:	93 1f       	adc	r25, r19
+     1e6:	88 0f       	add	r24, r24
+     1e8:	99 1f       	adc	r25, r25
+     1ea:	88 0f       	add	r24, r24
+     1ec:	99 1f       	adc	r25, r25
+     1ee:	08 95       	ret
+		
+		case 3:
+		return alt_mon*20;
+     1f0:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <__data_end>
+     1f4:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <__data_end+0x1>
+     1f8:	9c 01       	movw	r18, r24
+     1fa:	22 0f       	add	r18, r18
+     1fc:	33 1f       	adc	r19, r19
+     1fe:	22 0f       	add	r18, r18
+     200:	33 1f       	adc	r19, r19
+     202:	82 0f       	add	r24, r18
+     204:	93 1f       	adc	r25, r19
+     206:	88 0f       	add	r24, r24
+     208:	99 1f       	adc	r25, r25
+     20a:	88 0f       	add	r24, r24
+     20c:	99 1f       	adc	r25, r25
+     20e:	08 95       	ret
+		
+		default:
+		return 0;
+     210:	80 e0       	ldi	r24, 0x00	; 0
+     212:	90 e0       	ldi	r25, 0x00	; 0
+	}
+}
+     214:	08 95       	ret
+
+00000216 <BSDRV_Init>:
+ * @brief Bootstrap driver initialization
+ */
+void BSDRV_Init(void)
+{		
+	//GPIO configuration
+	DDRA &= ~0x0F; //Set as inputs
+     216:	8d b1       	in	r24, 0x0d	; 13
+     218:	80 7f       	andi	r24, 0xF0	; 240
+     21a:	8d b9       	out	0x0d, r24	; 13
+	PORTA |= 0x0F; //Enable pull-up
+     21c:	8e b1       	in	r24, 0x0e	; 14
+     21e:	8f 60       	ori	r24, 0x0F	; 15
+     220:	8e b9       	out	0x0e, r24	; 14
+	latched = 0;
+     222:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <latched>
+     226:	08 95       	ret
+
+00000228 <BSDRV_Latch>:
+ * @brief Read and latch bootstrap values
+ * @param [in] disable - Put bootstrap pins in low power mode
+ */
+void BSDRV_Latch(uint8_t disable)
+{
+	if(latched) return;
+     228:	90 91 0a 01 	lds	r25, 0x010A	; 0x80010a <latched>
+     22c:	91 11       	cpse	r25, r1
+     22e:	0c c0       	rjmp	.+24     	; 0x248 <BSDRV_Latch+0x20>
+	bootstraps = PINA&0x0F; //Read and save values
+     230:	9c b1       	in	r25, 0x0c	; 12
+     232:	9f 70       	andi	r25, 0x0F	; 15
+     234:	90 93 0b 01 	sts	0x010B, r25	; 0x80010b <bootstraps>
+	if(disable)
+     238:	88 23       	and	r24, r24
+     23a:	31 f0       	breq	.+12     	; 0x248 <BSDRV_Latch+0x20>
+	{
+		PORTA &= ~0x0F; //Turn-off pull ups to reduce current drain
+     23c:	8e b1       	in	r24, 0x0e	; 14
+     23e:	80 7f       	andi	r24, 0xF0	; 240
+     240:	8e b9       	out	0x0e, r24	; 14
+		latched = 1;	//Set latched flag
+     242:	81 e0       	ldi	r24, 0x01	; 1
+     244:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <latched>
+     248:	08 95       	ret
+
+0000024a <BSDRV_GetBootstrap>:
+ */
+uint8_t BSDRV_GetBootstrap(uint8_t ch)
+{
+	uint8_t ret_val = 0;
+	
+	switch(ch)
+     24a:	82 30       	cpi	r24, 0x02	; 2
+     24c:	b9 f0       	breq	.+46     	; 0x27c <BSDRV_GetBootstrap+0x32>
+     24e:	28 f4       	brcc	.+10     	; 0x25a <BSDRV_GetBootstrap+0x10>
+     250:	88 23       	and	r24, r24
+     252:	41 f0       	breq	.+16     	; 0x264 <BSDRV_GetBootstrap+0x1a>
+     254:	81 30       	cpi	r24, 0x01	; 1
+     256:	61 f0       	breq	.+24     	; 0x270 <BSDRV_GetBootstrap+0x26>
+     258:	22 c0       	rjmp	.+68     	; 0x29e <BSDRV_GetBootstrap+0x54>
+     25a:	83 30       	cpi	r24, 0x03	; 3
+     25c:	a9 f0       	breq	.+42     	; 0x288 <BSDRV_GetBootstrap+0x3e>
+     25e:	8f 3f       	cpi	r24, 0xFF	; 255
+     260:	c9 f0       	breq	.+50     	; 0x294 <BSDRV_GetBootstrap+0x4a>
+     262:	1d c0       	rjmp	.+58     	; 0x29e <BSDRV_GetBootstrap+0x54>
+	{
+		case 0:
+			if(bootstraps&0x01) ret_val = 0;
+     264:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <bootstraps>
+     268:	80 ff       	sbrs	r24, 0
+     26a:	1b c0       	rjmp	.+54     	; 0x2a2 <BSDRV_GetBootstrap+0x58>
+     26c:	80 e0       	ldi	r24, 0x00	; 0
+     26e:	08 95       	ret
+			else ret_val = 1;
+			break;
+		
+		case 1:
+			if(bootstraps&0x02) ret_val = 0;
+     270:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <bootstraps>
+     274:	81 ff       	sbrs	r24, 1
+     276:	17 c0       	rjmp	.+46     	; 0x2a6 <BSDRV_GetBootstrap+0x5c>
+     278:	80 e0       	ldi	r24, 0x00	; 0
+     27a:	08 95       	ret
+			else ret_val = 1;
+			break;
+		
+		case 2:
+			if(bootstraps&0x04) ret_val = 0;
+     27c:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <bootstraps>
+     280:	82 ff       	sbrs	r24, 2
+     282:	13 c0       	rjmp	.+38     	; 0x2aa <BSDRV_GetBootstrap+0x60>
+     284:	80 e0       	ldi	r24, 0x00	; 0
+     286:	08 95       	ret
+			else ret_val = 1;
+			break;
+		
+		case 3:
+			if(bootstraps&0x08) ret_val = 0;
+     288:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <bootstraps>
+     28c:	83 ff       	sbrs	r24, 3
+     28e:	0f c0       	rjmp	.+30     	; 0x2ae <BSDRV_GetBootstrap+0x64>
+     290:	80 e0       	ldi	r24, 0x00	; 0
+     292:	08 95       	ret
+			else ret_val = 1;
+			break;
+		
+		case 255:
+			ret_val = ((~bootstraps)&0x0F);
+     294:	80 91 0b 01 	lds	r24, 0x010B	; 0x80010b <bootstraps>
+     298:	80 95       	com	r24
+     29a:	8f 70       	andi	r24, 0x0F	; 15
+			break;
+     29c:	08 95       	ret
+		
+		default:
+			ret_val = 0;
+     29e:	80 e0       	ldi	r24, 0x00	; 0
+     2a0:	08 95       	ret
+	
+	switch(ch)
+	{
+		case 0:
+			if(bootstraps&0x01) ret_val = 0;
+			else ret_val = 1;
+     2a2:	81 e0       	ldi	r24, 0x01	; 1
+     2a4:	08 95       	ret
+			break;
+		
+		case 1:
+			if(bootstraps&0x02) ret_val = 0;
+			else ret_val = 1;
+     2a6:	81 e0       	ldi	r24, 0x01	; 1
+     2a8:	08 95       	ret
+			break;
+		
+		case 2:
+			if(bootstraps&0x04) ret_val = 0;
+			else ret_val = 1;
+     2aa:	81 e0       	ldi	r24, 0x01	; 1
+     2ac:	08 95       	ret
+			break;
+		
+		case 3:
+			if(bootstraps&0x08) ret_val = 0;
+			else ret_val = 1;
+     2ae:	81 e0       	ldi	r24, 0x01	; 1
+			ret_val = 0;
+			break;
+	}
+	
+	return ret_val;
+}
+     2b0:	08 95       	ret
+
+000002b2 <HAL_Init>:
+ * @brief Initializes hardware
+ */
+void HAL_Init(void)
+{
+	//Inputs configuration
+	DDRD &= ~0x0C; //Set as inputs
+     2b2:	8a b1       	in	r24, 0x0a	; 10
+     2b4:	83 7f       	andi	r24, 0xF3	; 243
+     2b6:	8a b9       	out	0x0a, r24	; 10
+	PORTD &= ~0x0C; //Disable MCU pull-up
+     2b8:	8b b1       	in	r24, 0x0b	; 11
+     2ba:	83 7f       	andi	r24, 0xF3	; 243
+     2bc:	8b b9       	out	0x0b, r24	; 11
+	
+	//Pull-x outputs configuration
+	DDRD |= 0x03; //Set as outputs
+     2be:	8a b1       	in	r24, 0x0a	; 10
+     2c0:	83 60       	ori	r24, 0x03	; 3
+     2c2:	8a b9       	out	0x0a, r24	; 10
+	PORTD &= ~0x03; //Set low
+     2c4:	8b b1       	in	r24, 0x0b	; 11
+     2c6:	8c 7f       	andi	r24, 0xFC	; 252
+     2c8:	8b b9       	out	0x0b, r24	; 11
+     2ca:	08 95       	ret
+
+000002cc <HAL_ReadKill>:
+ * @brief Reads kill switch input level
+ * @return level of kill input
+ */
+uint8_t HAL_ReadKill(void)
+{
+	if(PIND&0x08) return 1;
+     2cc:	99 b1       	in	r25, 0x09	; 9
+     2ce:	89 2f       	mov	r24, r25
+     2d0:	88 70       	andi	r24, 0x08	; 8
+     2d2:	93 fd       	sbrc	r25, 3
+     2d4:	81 e0       	ldi	r24, 0x01	; 1
+	else return 0;
+}
+     2d6:	08 95       	ret
+
+000002d8 <HAL_ReadMaster>:
+ * @brief Reads master switch input level
+ * @return level of master input
+ */
+uint8_t HAL_ReadMaster(void)
+{
+	if(PIND&0x04) return 1;
+     2d8:	99 b1       	in	r25, 0x09	; 9
+     2da:	89 2f       	mov	r24, r25
+     2dc:	84 70       	andi	r24, 0x04	; 4
+     2de:	92 fd       	sbrc	r25, 2
+     2e0:	81 e0       	ldi	r24, 0x01	; 1
+	else return 0;
+}
+     2e2:	08 95       	ret
+
+000002e4 <HAL_SetMasterPull>:
+ * @brief Master input pull-x control
+ * @param [in] side Pull-x side
+ */
+void HAL_SetMasterPull(uint8_t side)
+{
+	if(side==IN_PULL_UP)
+     2e4:	82 30       	cpi	r24, 0x02	; 2
+     2e6:	21 f4       	brne	.+8      	; 0x2f0 <HAL_SetMasterPull+0xc>
+	{
+		PORTD |= 0x01; //Set pull-x high
+     2e8:	8b b1       	in	r24, 0x0b	; 11
+     2ea:	81 60       	ori	r24, 0x01	; 1
+     2ec:	8b b9       	out	0x0b, r24	; 11
+     2ee:	08 95       	ret
+
+	}
+	else
+	{
+		PORTD &= ~0x01; //Set low
+     2f0:	8b b1       	in	r24, 0x0b	; 11
+     2f2:	8e 7f       	andi	r24, 0xFE	; 254
+     2f4:	8b b9       	out	0x0b, r24	; 11
+     2f6:	08 95       	ret
+
+000002f8 <HAL_SetKillPull>:
+ * @brief Kill input pull-x control
+ * @param [in] side Pull-x side
+ */
+void HAL_SetKillPull(uint8_t side)
+{
+	if(side==IN_PULL_UP)
+     2f8:	82 30       	cpi	r24, 0x02	; 2
+     2fa:	21 f4       	brne	.+8      	; 0x304 <__stack+0x5>
+	{
+		PORTD |= 0x02; //Set high
+     2fc:	8b b1       	in	r24, 0x0b	; 11
+     2fe:	82 60       	ori	r24, 0x02	; 2
+     300:	8b b9       	out	0x0b, r24	; 11
+     302:	08 95       	ret
+	}
+	else
+	{
+		PORTD &= ~0x02; //Set low
+     304:	8b b1       	in	r24, 0x0b	; 11
+     306:	8d 7f       	andi	r24, 0xFD	; 253
+     308:	8b b9       	out	0x0b, r24	; 11
+     30a:	08 95       	ret
+
+0000030c <INDRV_Init>:
+ * @brief Initializes driver
+ * @param [in] pMstrCfg Master switch configuration
+ * @param [in] pKillCfg Kill switch configuration
+ */
+void INDRV_Init(inCfgDef* pMstrCfg,inCfgDef* pKillCfg)
+{
+     30c:	0f 93       	push	r16
+     30e:	1f 93       	push	r17
+     310:	cf 93       	push	r28
+     312:	df 93       	push	r29
+     314:	8c 01       	movw	r16, r24
+     316:	eb 01       	movw	r28, r22
+	//Initialize hardware
+	HAL_Init();
+     318:	cc df       	rcall	.-104    	; 0x2b2 <HAL_Init>
+	
+	//Set config
+	mstr_cfg.act_level = pMstrCfg->act_level;
+     31a:	d8 01       	movw	r26, r16
+     31c:	8c 91       	ld	r24, X
+     31e:	e3 e1       	ldi	r30, 0x13	; 19
+     320:	f1 e0       	ldi	r31, 0x01	; 1
+     322:	80 83       	st	Z, r24
+	mstr_cfg.pull = pMstrCfg->pull;
+     324:	12 96       	adiw	r26, 0x02	; 2
+     326:	8c 91       	ld	r24, X
+     328:	12 97       	sbiw	r26, 0x02	; 2
+     32a:	82 83       	std	Z+2, r24	; 0x02
+	mstr_cfg.dbnc_limit = pMstrCfg->dbnc_limit;
+     32c:	11 96       	adiw	r26, 0x01	; 1
+     32e:	8c 91       	ld	r24, X
+     330:	81 83       	std	Z+1, r24	; 0x01
+	
+	kill_cfg.act_level = pKillCfg->act_level;
+     332:	88 81       	ld	r24, Y
+     334:	ac e0       	ldi	r26, 0x0C	; 12
+     336:	b1 e0       	ldi	r27, 0x01	; 1
+     338:	8c 93       	st	X, r24
+	kill_cfg.pull = pKillCfg->pull;
+     33a:	8a 81       	ldd	r24, Y+2	; 0x02
+     33c:	12 96       	adiw	r26, 0x02	; 2
+     33e:	8c 93       	st	X, r24
+     340:	12 97       	sbiw	r26, 0x02	; 2
+	kill_cfg.dbnc_limit = pKillCfg->dbnc_limit;
+     342:	89 81       	ldd	r24, Y+1	; 0x01
+     344:	11 96       	adiw	r26, 0x01	; 1
+     346:	8c 93       	st	X, r24
+	
+	//Set default values
+	if(mstr_cfg.act_level) mstr.level = 0; 
+     348:	80 81       	ld	r24, Z
+     34a:	88 23       	and	r24, r24
+     34c:	19 f0       	breq	.+6      	; 0x354 <INDRV_Init+0x48>
+     34e:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <mstr>
+     352:	03 c0       	rjmp	.+6      	; 0x35a <INDRV_Init+0x4e>
+	else mstr.level = 1;
+     354:	81 e0       	ldi	r24, 0x01	; 1
+     356:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <mstr>
+	
+	mstr.changed = 0;
+     35a:	e6 e1       	ldi	r30, 0x16	; 22
+     35c:	f1 e0       	ldi	r31, 0x01	; 1
+     35e:	11 82       	std	Z+1, r1	; 0x01
+	mstr.blocked = 0;
+     360:	12 82       	std	Z+2, r1	; 0x02
+	mstr.dbnc_timer = 0;
+     362:	13 82       	std	Z+3, r1	; 0x03
+	
+	//Set default values
+	if(kill_cfg.act_level) kill.level = 0; 
+     364:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <kill_cfg>
+     368:	88 23       	and	r24, r24
+     36a:	19 f0       	breq	.+6      	; 0x372 <INDRV_Init+0x66>
+     36c:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <kill>
+     370:	03 c0       	rjmp	.+6      	; 0x378 <INDRV_Init+0x6c>
+	else kill.level = 1;
+     372:	81 e0       	ldi	r24, 0x01	; 1
+     374:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <kill>
+	
+	kill.changed = 0;
+     378:	ef e0       	ldi	r30, 0x0F	; 15
+     37a:	f1 e0       	ldi	r31, 0x01	; 1
+     37c:	11 82       	std	Z+1, r1	; 0x01
+	kill.blocked = 0;
+     37e:	12 82       	std	Z+2, r1	; 0x02
+	kill.dbnc_timer = 0;
+     380:	13 82       	std	Z+3, r1	; 0x03
+	
+	//Apply pull-x config
+	HAL_SetMasterPull(mstr_cfg.pull);
+     382:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <mstr_cfg+0x2>
+     386:	ae df       	rcall	.-164    	; 0x2e4 <HAL_SetMasterPull>
+	HAL_SetKillPull(kill_cfg.pull);
+     388:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <kill_cfg+0x2>
+     38c:	b5 df       	rcall	.-150    	; 0x2f8 <HAL_SetKillPull>
+}
+     38e:	df 91       	pop	r29
+     390:	cf 91       	pop	r28
+     392:	1f 91       	pop	r17
+     394:	0f 91       	pop	r16
+     396:	08 95       	ret
+
+00000398 <INDRV_ReadAll>:
+void INDRV_ReadAll(void)
+{
+	uint8_t temp = 0;
+	
+	//Master switch input
+	if(!mstr.blocked)
+     398:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <mstr+0x2>
+     39c:	81 11       	cpse	r24, r1
+     39e:	1d c0       	rjmp	.+58     	; 0x3da <INDRV_ReadAll+0x42>
+	{
+		if(HAL_ReadMaster()) temp = 1;
+     3a0:	9b df       	rcall	.-202    	; 0x2d8 <HAL_ReadMaster>
+     3a2:	88 23       	and	r24, r24
+     3a4:	11 f0       	breq	.+4      	; 0x3aa <INDRV_ReadAll+0x12>
+     3a6:	91 e0       	ldi	r25, 0x01	; 1
+     3a8:	01 c0       	rjmp	.+2      	; 0x3ac <INDRV_ReadAll+0x14>
+		else temp = 0;
+     3aa:	90 e0       	ldi	r25, 0x00	; 0
+		
+		if(mstr.level!=temp) mstr.dbnc_timer++;
+     3ac:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <mstr>
+     3b0:	98 17       	cp	r25, r24
+     3b2:	31 f0       	breq	.+12     	; 0x3c0 <INDRV_ReadAll+0x28>
+     3b4:	e6 e1       	ldi	r30, 0x16	; 22
+     3b6:	f1 e0       	ldi	r31, 0x01	; 1
+     3b8:	83 81       	ldd	r24, Z+3	; 0x03
+     3ba:	8f 5f       	subi	r24, 0xFF	; 255
+     3bc:	83 83       	std	Z+3, r24	; 0x03
+     3be:	02 c0       	rjmp	.+4      	; 0x3c4 <INDRV_ReadAll+0x2c>
+		else mstr.dbnc_timer = 0;
+     3c0:	10 92 19 01 	sts	0x0119, r1	; 0x800119 <mstr+0x3>
+		
+		if(mstr.dbnc_timer>mstr_cfg.dbnc_limit){mstr.level = temp; mstr.changed = 1;};
+     3c4:	20 91 19 01 	lds	r18, 0x0119	; 0x800119 <mstr+0x3>
+     3c8:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <mstr_cfg+0x1>
+     3cc:	82 17       	cp	r24, r18
+     3ce:	28 f4       	brcc	.+10     	; 0x3da <INDRV_ReadAll+0x42>
+     3d0:	e6 e1       	ldi	r30, 0x16	; 22
+     3d2:	f1 e0       	ldi	r31, 0x01	; 1
+     3d4:	90 83       	st	Z, r25
+     3d6:	81 e0       	ldi	r24, 0x01	; 1
+     3d8:	81 83       	std	Z+1, r24	; 0x01
+	};	
+
+	//Kill switch input
+	if(!kill.blocked)
+     3da:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <kill+0x2>
+     3de:	81 11       	cpse	r24, r1
+     3e0:	1d c0       	rjmp	.+58     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+	{
+		if(HAL_ReadKill()) temp = 1;
+     3e2:	74 df       	rcall	.-280    	; 0x2cc <HAL_ReadKill>
+     3e4:	88 23       	and	r24, r24
+     3e6:	11 f0       	breq	.+4      	; 0x3ec <INDRV_ReadAll+0x54>
+     3e8:	91 e0       	ldi	r25, 0x01	; 1
+     3ea:	01 c0       	rjmp	.+2      	; 0x3ee <INDRV_ReadAll+0x56>
+		else temp = 0;
+     3ec:	90 e0       	ldi	r25, 0x00	; 0
+		
+		if(kill.level!=temp) kill.dbnc_timer++;
+     3ee:	80 91 0f 01 	lds	r24, 0x010F	; 0x80010f <kill>
+     3f2:	98 17       	cp	r25, r24
+     3f4:	31 f0       	breq	.+12     	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+     3f6:	ef e0       	ldi	r30, 0x0F	; 15
+     3f8:	f1 e0       	ldi	r31, 0x01	; 1
+     3fa:	83 81       	ldd	r24, Z+3	; 0x03
+     3fc:	8f 5f       	subi	r24, 0xFF	; 255
+     3fe:	83 83       	std	Z+3, r24	; 0x03
+     400:	02 c0       	rjmp	.+4      	; 0x406 <__LOCK_REGION_LENGTH__+0x6>
+		else kill.dbnc_timer = 0;
+     402:	10 92 12 01 	sts	0x0112, r1	; 0x800112 <kill+0x3>
+		
+		if(kill.dbnc_timer>kill_cfg.dbnc_limit){kill.level = temp; kill.changed = 1;};
+     406:	20 91 12 01 	lds	r18, 0x0112	; 0x800112 <kill+0x3>
+     40a:	80 91 0d 01 	lds	r24, 0x010D	; 0x80010d <kill_cfg+0x1>
+     40e:	82 17       	cp	r24, r18
+     410:	28 f4       	brcc	.+10     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+     412:	ef e0       	ldi	r30, 0x0F	; 15
+     414:	f1 e0       	ldi	r31, 0x01	; 1
+     416:	90 83       	st	Z, r25
+     418:	81 e0       	ldi	r24, 0x01	; 1
+     41a:	81 83       	std	Z+1, r24	; 0x01
+     41c:	08 95       	ret
+
+0000041e <INDRV_Sleep>:
+/**
+ * @brief Put input channel in low power mode
+ * @param [in] ch Input channel
+ */
+void INDRV_Sleep(uint8_t ch)
+{
+     41e:	cf 93       	push	r28
+     420:	df 93       	push	r29
+	switch(ch)
+     422:	81 30       	cpi	r24, 0x01	; 1
+     424:	19 f0       	breq	.+6      	; 0x42c <INDRV_Sleep+0xe>
+     426:	82 30       	cpi	r24, 0x02	; 2
+     428:	a1 f0       	breq	.+40     	; 0x452 <INDRV_Sleep+0x34>
+     42a:	25 c0       	rjmp	.+74     	; 0x476 <INDRV_Sleep+0x58>
+	{
+		case IN_MASTER:
+			//Set not-active level
+			if(mstr_cfg.act_level) mstr.level = 0; 
+     42c:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <mstr_cfg>
+     430:	88 23       	and	r24, r24
+     432:	19 f0       	breq	.+6      	; 0x43a <INDRV_Sleep+0x1c>
+     434:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <mstr>
+     438:	03 c0       	rjmp	.+6      	; 0x440 <INDRV_Sleep+0x22>
+			else mstr.level = 1;
+     43a:	81 e0       	ldi	r24, 0x01	; 1
+     43c:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <mstr>
+			//Reset values
+			mstr.changed = 0;
+     440:	c6 e1       	ldi	r28, 0x16	; 22
+     442:	d1 e0       	ldi	r29, 0x01	; 1
+     444:	19 82       	std	Y+1, r1	; 0x01
+			mstr.dbnc_timer = 0;
+     446:	1b 82       	std	Y+3, r1	; 0x03
+			//Disable pull-x
+			HAL_SetMasterPull(IN_PULL_NONE);
+     448:	80 e0       	ldi	r24, 0x00	; 0
+     44a:	4c df       	rcall	.-360    	; 0x2e4 <HAL_SetMasterPull>
+			//Set blocked flag
+			mstr.blocked = 1;
+     44c:	81 e0       	ldi	r24, 0x01	; 1
+     44e:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+     450:	12 c0       	rjmp	.+36     	; 0x476 <INDRV_Sleep+0x58>
+		
+		case IN_KILL:
+			//Set not-active level
+			if(kill_cfg.act_level) kill.level = 0; 
+     452:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <kill_cfg>
+     456:	88 23       	and	r24, r24
+     458:	19 f0       	breq	.+6      	; 0x460 <INDRV_Sleep+0x42>
+     45a:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <kill>
+     45e:	03 c0       	rjmp	.+6      	; 0x466 <INDRV_Sleep+0x48>
+			else kill.level = 1;
+     460:	81 e0       	ldi	r24, 0x01	; 1
+     462:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <kill>
+			//Reset values
+			kill.changed = 0;
+     466:	cf e0       	ldi	r28, 0x0F	; 15
+     468:	d1 e0       	ldi	r29, 0x01	; 1
+     46a:	19 82       	std	Y+1, r1	; 0x01
+			kill.dbnc_timer = 0;
+     46c:	1b 82       	std	Y+3, r1	; 0x03
+			//Disable pull-x
+			HAL_SetKillPull(IN_PULL_NONE);
+     46e:	80 e0       	ldi	r24, 0x00	; 0
+     470:	43 df       	rcall	.-378    	; 0x2f8 <HAL_SetKillPull>
+			//Set blocked flag
+			kill.blocked = 1;
+     472:	81 e0       	ldi	r24, 0x01	; 1
+     474:	8a 83       	std	Y+2, r24	; 0x02
+			break;
+		
+		default:
+			break;
+	}
+}
+     476:	df 91       	pop	r29
+     478:	cf 91       	pop	r28
+     47a:	08 95       	ret
+
+0000047c <INDRV_Wake>:
+/**
+ * @brief Wake input channel from low power mode
+ * @param [in] ch Input channel
+ */
+void INDRV_Wake(uint8_t ch)
+{
+     47c:	cf 93       	push	r28
+     47e:	df 93       	push	r29
+	switch(ch)
+     480:	81 30       	cpi	r24, 0x01	; 1
+     482:	19 f0       	breq	.+6      	; 0x48a <INDRV_Wake+0xe>
+     484:	82 30       	cpi	r24, 0x02	; 2
+     486:	a1 f0       	breq	.+40     	; 0x4b0 <INDRV_Wake+0x34>
+     488:	25 c0       	rjmp	.+74     	; 0x4d4 <INDRV_Wake+0x58>
+	{
+		case IN_MASTER:
+			//Set not-active level
+			if(mstr_cfg.act_level) mstr.level = 0; 
+     48a:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <mstr_cfg>
+     48e:	88 23       	and	r24, r24
+     490:	19 f0       	breq	.+6      	; 0x498 <INDRV_Wake+0x1c>
+     492:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <mstr>
+     496:	03 c0       	rjmp	.+6      	; 0x49e <INDRV_Wake+0x22>
+			else mstr.level = 1;
+     498:	81 e0       	ldi	r24, 0x01	; 1
+     49a:	80 93 16 01 	sts	0x0116, r24	; 0x800116 <mstr>
+			//Reset values
+			mstr.changed = 0;
+     49e:	c6 e1       	ldi	r28, 0x16	; 22
+     4a0:	d1 e0       	ldi	r29, 0x01	; 1
+     4a2:	19 82       	std	Y+1, r1	; 0x01
+			mstr.dbnc_timer = 0;
+     4a4:	1b 82       	std	Y+3, r1	; 0x03
+			//Restore pull-x
+			HAL_SetMasterPull(mstr_cfg.pull);
+     4a6:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <mstr_cfg+0x2>
+     4aa:	1c df       	rcall	.-456    	; 0x2e4 <HAL_SetMasterPull>
+			//Reset blocked flag
+			mstr.blocked = 0;
+     4ac:	1a 82       	std	Y+2, r1	; 0x02
+			break;
+     4ae:	12 c0       	rjmp	.+36     	; 0x4d4 <INDRV_Wake+0x58>
+		
+		case IN_KILL:
+			///Set not-active level
+			if(kill_cfg.act_level) kill.level = 0; 
+     4b0:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <kill_cfg>
+     4b4:	88 23       	and	r24, r24
+     4b6:	19 f0       	breq	.+6      	; 0x4be <INDRV_Wake+0x42>
+     4b8:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <kill>
+     4bc:	03 c0       	rjmp	.+6      	; 0x4c4 <INDRV_Wake+0x48>
+			else kill.level = 1;
+     4be:	81 e0       	ldi	r24, 0x01	; 1
+     4c0:	80 93 0f 01 	sts	0x010F, r24	; 0x80010f <kill>
+			//Reset values
+			kill.changed = 0;
+     4c4:	cf e0       	ldi	r28, 0x0F	; 15
+     4c6:	d1 e0       	ldi	r29, 0x01	; 1
+     4c8:	19 82       	std	Y+1, r1	; 0x01
+			kill.dbnc_timer = 0;
+     4ca:	1b 82       	std	Y+3, r1	; 0x03
+			//Restore pull-x
+			HAL_SetKillPull(kill_cfg.pull);
+     4cc:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <kill_cfg+0x2>
+     4d0:	13 df       	rcall	.-474    	; 0x2f8 <HAL_SetKillPull>
+			//Reset blocked flag
+			kill.blocked = 0;
+     4d2:	1a 82       	std	Y+2, r1	; 0x02
+			break;
+		
+		default:
+			break;
+	}
+}
+     4d4:	df 91       	pop	r29
+     4d6:	cf 91       	pop	r28
+     4d8:	08 95       	ret
+
+000004da <INDRV_GetInput>:
+ * @param [in] ch Input channel
+ * @return Channel state [0-inactive,1-active]
+ */
+uint8_t INDRV_GetInput(uint8_t ch)
+{
+	switch(ch)
+     4da:	81 30       	cpi	r24, 0x01	; 1
+     4dc:	19 f0       	breq	.+6      	; 0x4e4 <INDRV_GetInput+0xa>
+     4de:	82 30       	cpi	r24, 0x02	; 2
+     4e0:	69 f0       	breq	.+26     	; 0x4fc <INDRV_GetInput+0x22>
+     4e2:	18 c0       	rjmp	.+48     	; 0x514 <INDRV_GetInput+0x3a>
+	{
+		case 1:
+			if((!mstr.blocked)&&(mstr.level==mstr_cfg.act_level)) return 1;
+     4e4:	80 91 18 01 	lds	r24, 0x0118	; 0x800118 <mstr+0x2>
+     4e8:	81 11       	cpse	r24, r1
+     4ea:	16 c0       	rjmp	.+44     	; 0x518 <INDRV_GetInput+0x3e>
+     4ec:	90 91 16 01 	lds	r25, 0x0116	; 0x800116 <mstr>
+     4f0:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <mstr_cfg>
+     4f4:	98 17       	cp	r25, r24
+     4f6:	91 f0       	breq	.+36     	; 0x51c <INDRV_GetInput+0x42>
+			else return 0;;
+     4f8:	80 e0       	ldi	r24, 0x00	; 0
+     4fa:	08 95       	ret
+		
+		case 2:
+			if((!kill.blocked)&&(kill.level==kill_cfg.act_level)) return 1;
+     4fc:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <kill+0x2>
+     500:	81 11       	cpse	r24, r1
+     502:	0e c0       	rjmp	.+28     	; 0x520 <INDRV_GetInput+0x46>
+     504:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <kill>
+     508:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <kill_cfg>
+     50c:	98 17       	cp	r25, r24
+     50e:	51 f0       	breq	.+20     	; 0x524 <INDRV_GetInput+0x4a>
+			else return 0;
+     510:	80 e0       	ldi	r24, 0x00	; 0
+     512:	08 95       	ret
+		
+		default:
+			return 0;
+     514:	80 e0       	ldi	r24, 0x00	; 0
+     516:	08 95       	ret
+{
+	switch(ch)
+	{
+		case 1:
+			if((!mstr.blocked)&&(mstr.level==mstr_cfg.act_level)) return 1;
+			else return 0;;
+     518:	80 e0       	ldi	r24, 0x00	; 0
+     51a:	08 95       	ret
+uint8_t INDRV_GetInput(uint8_t ch)
+{
+	switch(ch)
+	{
+		case 1:
+			if((!mstr.blocked)&&(mstr.level==mstr_cfg.act_level)) return 1;
+     51c:	81 e0       	ldi	r24, 0x01	; 1
+     51e:	08 95       	ret
+			else return 0;;
+		
+		case 2:
+			if((!kill.blocked)&&(kill.level==kill_cfg.act_level)) return 1;
+			else return 0;
+     520:	80 e0       	ldi	r24, 0x00	; 0
+     522:	08 95       	ret
+		case 1:
+			if((!mstr.blocked)&&(mstr.level==mstr_cfg.act_level)) return 1;
+			else return 0;;
+		
+		case 2:
+			if((!kill.blocked)&&(kill.level==kill_cfg.act_level)) return 1;
+     524:	81 e0       	ldi	r24, 0x01	; 1
+			else return 0;
+		
+		default:
+			return 0;
+	}
+}
+     526:	08 95       	ret
+
+00000528 <HAL_Init>:
+ * @brief Initializes hardware
+ */
+void HAL_Init(void)
+{
+	//Inputs configuration
+	PORTB &= ~0x04; //Set low
+     528:	85 b1       	in	r24, 0x05	; 5
+     52a:	8b 7f       	andi	r24, 0xFB	; 251
+     52c:	85 b9       	out	0x05, r24	; 5
+	DDRB |= 0x04; //Set as output
+     52e:	84 b1       	in	r24, 0x04	; 4
+     530:	84 60       	ori	r24, 0x04	; 4
+     532:	84 b9       	out	0x04, r24	; 4
+     534:	08 95       	ret
+
+00000536 <HAL_Set>:
+ * @brief Set LED output state
+ * @param [in] state LED output state [0-OFF,1-ON]
+ */
+void HAL_Set(uint8_t state)
+{
+	if(state)
+     536:	88 23       	and	r24, r24
+     538:	21 f0       	breq	.+8      	; 0x542 <HAL_Set+0xc>
+	{
+		PORTB |= 0x04; //Set high
+     53a:	85 b1       	in	r24, 0x05	; 5
+     53c:	84 60       	ori	r24, 0x04	; 4
+     53e:	85 b9       	out	0x05, r24	; 5
+     540:	08 95       	ret
+	}
+	else
+	{
+		PORTB &= ~0x04; //Set low
+     542:	85 b1       	in	r24, 0x05	; 5
+     544:	8b 7f       	andi	r24, 0xFB	; 251
+     546:	85 b9       	out	0x05, r24	; 5
+     548:	08 95       	ret
+
+0000054a <HAL_Toggle>:
+/**
+ * @brief Toggle LED output
+ */
+void HAL_Toggle(void)
+{
+	if(PORTB&0x04)
+     54a:	2a 9b       	sbis	0x05, 2	; 5
+     54c:	04 c0       	rjmp	.+8      	; 0x556 <HAL_Toggle+0xc>
+	{
+		PORTB &= ~0x04;
+     54e:	85 b1       	in	r24, 0x05	; 5
+     550:	8b 7f       	andi	r24, 0xFB	; 251
+     552:	85 b9       	out	0x05, r24	; 5
+     554:	08 95       	ret
+	}
+	else
+	{
+	PORTB |= 0x04;
+     556:	85 b1       	in	r24, 0x05	; 5
+     558:	84 60       	ori	r24, 0x04	; 4
+     55a:	85 b9       	out	0x05, r24	; 5
+     55c:	08 95       	ret
+
+0000055e <LEDDRV_Init>:
+ * @brief Initializes driver
+ */
+void LEDDRV_Init(void)
+{
+	//Initialize hardware
+	HAL_Init();
+     55e:	e4 df       	rcall	.-56     	; 0x528 <HAL_Init>
+	timer = 0;
+     560:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <timer+0x1>
+     564:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <timer>
+	flash_t = 0;
+     568:	10 92 1b 01 	sts	0x011B, r1	; 0x80011b <flash_t+0x1>
+     56c:	10 92 1a 01 	sts	0x011A, r1	; 0x80011a <flash_t>
+	mode = LED_OFF;
+     570:	10 92 1e 01 	sts	0x011E, r1	; 0x80011e <mode>
+     574:	08 95       	ret
+
+00000576 <LEDDRV_Off>:
+/**
+ * @brief Turn off LED
+ */
+void LEDDRV_Off(void)
+{
+	mode = LED_OFF;
+     576:	10 92 1e 01 	sts	0x011E, r1	; 0x80011e <mode>
+	timer = 0;
+     57a:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <timer+0x1>
+     57e:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <timer>
+     582:	08 95       	ret
+
+00000584 <LEDDRV_OnSolid>:
+/**
+ * @brief Turn on LED in solid-on state
+ */
+void LEDDRV_OnSolid(void)
+{
+	mode = LED_SOLID;
+     584:	81 e0       	ldi	r24, 0x01	; 1
+     586:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <mode>
+	timer = 0;
+     58a:	10 92 1d 01 	sts	0x011D, r1	; 0x80011d <timer+0x1>
+     58e:	10 92 1c 01 	sts	0x011C, r1	; 0x80011c <timer>
+     592:	08 95       	ret
+
+00000594 <LEDDRV_Flashing>:
+ * @brief Set LED in flashing state
+ * @param [in] t flashing period
+ */
+void LEDDRV_Flashing(uint16_t t)
+{
+	mode = LED_FLASH;
+     594:	22 e0       	ldi	r18, 0x02	; 2
+     596:	20 93 1e 01 	sts	0x011E, r18	; 0x80011e <mode>
+	if(t<2) t=2;
+     59a:	82 30       	cpi	r24, 0x02	; 2
+     59c:	91 05       	cpc	r25, r1
+     59e:	10 f4       	brcc	.+4      	; 0x5a4 <LEDDRV_Flashing+0x10>
+     5a0:	82 e0       	ldi	r24, 0x02	; 2
+     5a2:	90 e0       	ldi	r25, 0x00	; 0
+	flash_t  = t/2;
+     5a4:	96 95       	lsr	r25
+     5a6:	87 95       	ror	r24
+     5a8:	90 93 1b 01 	sts	0x011B, r25	; 0x80011b <flash_t+0x1>
+     5ac:	80 93 1a 01 	sts	0x011A, r24	; 0x80011a <flash_t>
+     5b0:	08 95       	ret
+
+000005b2 <LEDDRV_Process>:
+/**
+ * @brief LED logic processing
+ */
+void LEDDRV_Process(void)
+{
+	switch(mode)
+     5b2:	80 91 1e 01 	lds	r24, 0x011E	; 0x80011e <mode>
+     5b6:	81 30       	cpi	r24, 0x01	; 1
+     5b8:	19 f0       	breq	.+6      	; 0x5c0 <LEDDRV_Process+0xe>
+     5ba:	82 30       	cpi	r24, 0x02	; 2
+     5bc:	21 f0       	breq	.+8      	; 0x5c6 <LEDDRV_Process+0x14>
+     5be:	1d c0       	rjmp	.+58     	; 0x5fa <LEDDRV_Process+0x48>
+	{
+		case LED_SOLID:
+			HAL_Set(1);
+     5c0:	81 e0       	ldi	r24, 0x01	; 1
+     5c2:	b9 df       	rcall	.-142    	; 0x536 <HAL_Set>
+			break;
+     5c4:	08 95       	ret
+			
+		case LED_FLASH:
+			if(timer) timer--;
+     5c6:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <timer>
+     5ca:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <timer+0x1>
+     5ce:	89 2b       	or	r24, r25
+     5d0:	51 f0       	breq	.+20     	; 0x5e6 <LEDDRV_Process+0x34>
+     5d2:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <timer>
+     5d6:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <timer+0x1>
+     5da:	01 97       	sbiw	r24, 0x01	; 1
+     5dc:	90 93 1d 01 	sts	0x011D, r25	; 0x80011d <timer+0x1>
+     5e0:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <timer>
+     5e4:	08 95       	ret
+			else{HAL_Toggle();timer = flash_t;}
+     5e6:	b1 df       	rcall	.-158    	; 0x54a <HAL_Toggle>
+     5e8:	80 91 1a 01 	lds	r24, 0x011A	; 0x80011a <flash_t>
+     5ec:	90 91 1b 01 	lds	r25, 0x011B	; 0x80011b <flash_t+0x1>
+     5f0:	90 93 1d 01 	sts	0x011D, r25	; 0x80011d <timer+0x1>
+     5f4:	80 93 1c 01 	sts	0x011C, r24	; 0x80011c <timer>
+     5f8:	08 95       	ret
+			break;
+			
+		default:
+			HAL_Set(0);
+     5fa:	80 e0       	ldi	r24, 0x00	; 0
+     5fc:	9c df       	rcall	.-200    	; 0x536 <HAL_Set>
+     5fe:	08 95       	ret
+
+00000600 <ProcessIgnitionProtection>:
+		case OUT_ISOL:
+			isolProt.ext_fault = 0;
+			break;
+			
+		case OUT_IGNC:
+			igncProt.ext_fault = 0;
+     600:	9c 01       	movw	r18, r24
+     602:	90 91 45 01 	lds	r25, 0x0145	; 0x800145 <igncState>
+     606:	92 30       	cpi	r25, 0x02	; 2
+     608:	41 f4       	brne	.+16     	; 0x61a <ProcessIgnitionProtection+0x1a>
+     60a:	62 17       	cp	r22, r18
+     60c:	73 07       	cpc	r23, r19
+     60e:	28 f4       	brcc	.+10     	; 0x61a <ProcessIgnitionProtection+0x1a>
+     610:	c9 01       	movw	r24, r18
+     612:	86 1b       	sub	r24, r22
+     614:	97 0b       	sbc	r25, r23
+     616:	bc 01       	movw	r22, r24
+     618:	06 c0       	rjmp	.+12     	; 0x626 <ProcessIgnitionProtection+0x26>
+     61a:	80 91 45 01 	lds	r24, 0x0145	; 0x800145 <igncState>
+     61e:	81 30       	cpi	r24, 0x01	; 1
+     620:	11 f0       	breq	.+4      	; 0x626 <ProcessIgnitionProtection+0x26>
+     622:	60 e0       	ldi	r22, 0x00	; 0
+     624:	70 e0       	ldi	r23, 0x00	; 0
+     626:	e4 e3       	ldi	r30, 0x34	; 52
+     628:	f1 e0       	ldi	r31, 0x01	; 1
+     62a:	11 82       	std	Z+1, r1	; 0x01
+     62c:	12 82       	std	Z+2, r1	; 0x02
+     62e:	65 3f       	cpi	r22, 0xF5	; 245
+     630:	91 e0       	ldi	r25, 0x01	; 1
+     632:	79 07       	cpc	r23, r25
+     634:	20 f0       	brcs	.+8      	; 0x63e <ProcessIgnitionProtection+0x3e>
+     636:	81 e0       	ldi	r24, 0x01	; 1
+     638:	80 93 34 01 	sts	0x0134, r24	; 0x800134 <igncProt>
+     63c:	02 c0       	rjmp	.+4      	; 0x642 <ProcessIgnitionProtection+0x42>
+     63e:	10 92 34 01 	sts	0x0134, r1	; 0x800134 <igncProt>
+     642:	80 91 3d 01 	lds	r24, 0x013D	; 0x80013d <igncProt+0x9>
+     646:	88 23       	and	r24, r24
+     648:	29 f0       	breq	.+10     	; 0x654 <ProcessIgnitionProtection+0x54>
+     64a:	e4 e3       	ldi	r30, 0x34	; 52
+     64c:	f1 e0       	ldi	r31, 0x01	; 1
+     64e:	81 85       	ldd	r24, Z+9	; 0x09
+     650:	81 50       	subi	r24, 0x01	; 1
+     652:	81 87       	std	Z+9, r24	; 0x09
+     654:	80 91 34 01 	lds	r24, 0x0134	; 0x800134 <igncProt>
+     658:	88 23       	and	r24, r24
+     65a:	b9 f0       	breq	.+46     	; 0x68a <ProcessIgnitionProtection+0x8a>
+     65c:	80 91 3d 01 	lds	r24, 0x013D	; 0x80013d <igncProt+0x9>
+     660:	81 11       	cpse	r24, r1
+     662:	13 c0       	rjmp	.+38     	; 0x68a <ProcessIgnitionProtection+0x8a>
+     664:	cb 01       	movw	r24, r22
+     666:	64 ef       	ldi	r22, 0xF4	; 244
+     668:	71 e0       	ldi	r23, 0x01	; 1
+     66a:	04 d6       	rcall	.+3080   	; 0x1274 <__udivmodhi4>
+     66c:	80 91 37 01 	lds	r24, 0x0137	; 0x800137 <igncProt+0x3>
+     670:	80 95       	com	r24
+     672:	86 17       	cp	r24, r22
+     674:	20 f4       	brcc	.+8      	; 0x67e <ProcessIgnitionProtection+0x7e>
+     676:	8f ef       	ldi	r24, 0xFF	; 255
+     678:	80 93 37 01 	sts	0x0137, r24	; 0x800137 <igncProt+0x3>
+     67c:	0f c0       	rjmp	.+30     	; 0x69c <ProcessIgnitionProtection+0x9c>
+     67e:	e4 e3       	ldi	r30, 0x34	; 52
+     680:	f1 e0       	ldi	r31, 0x01	; 1
+     682:	83 81       	ldd	r24, Z+3	; 0x03
+     684:	68 0f       	add	r22, r24
+     686:	63 83       	std	Z+3, r22	; 0x03
+     688:	09 c0       	rjmp	.+18     	; 0x69c <ProcessIgnitionProtection+0x9c>
+     68a:	80 91 37 01 	lds	r24, 0x0137	; 0x800137 <igncProt+0x3>
+     68e:	88 23       	and	r24, r24
+     690:	29 f0       	breq	.+10     	; 0x69c <ProcessIgnitionProtection+0x9c>
+     692:	e4 e3       	ldi	r30, 0x34	; 52
+     694:	f1 e0       	ldi	r31, 0x01	; 1
+     696:	83 81       	ldd	r24, Z+3	; 0x03
+     698:	81 50       	subi	r24, 0x01	; 1
+     69a:	83 83       	std	Z+3, r24	; 0x03
+     69c:	80 91 35 01 	lds	r24, 0x0135	; 0x800135 <igncProt+0x1>
+     6a0:	81 11       	cpse	r24, r1
+     6a2:	08 c0       	rjmp	.+16     	; 0x6b4 <ProcessIgnitionProtection+0xb4>
+     6a4:	80 91 36 01 	lds	r24, 0x0136	; 0x800136 <igncProt+0x2>
+     6a8:	81 11       	cpse	r24, r1
+     6aa:	04 c0       	rjmp	.+8      	; 0x6b4 <ProcessIgnitionProtection+0xb4>
+     6ac:	80 91 37 01 	lds	r24, 0x0137	; 0x800137 <igncProt+0x3>
+     6b0:	83 30       	cpi	r24, 0x03	; 3
+     6b2:	e0 f0       	brcs	.+56     	; 0x6ec <ProcessIgnitionProtection+0xec>
+     6b4:	80 91 3b 01 	lds	r24, 0x013B	; 0x80013b <igncProt+0x7>
+     6b8:	81 11       	cpse	r24, r1
+     6ba:	09 c0       	rjmp	.+18     	; 0x6ce <ProcessIgnitionProtection+0xce>
+     6bc:	80 91 3f 01 	lds	r24, 0x013F	; 0x80013f <igncProt+0xb>
+     6c0:	8f 3f       	cpi	r24, 0xFF	; 255
+     6c2:	29 f0       	breq	.+10     	; 0x6ce <ProcessIgnitionProtection+0xce>
+     6c4:	e4 e3       	ldi	r30, 0x34	; 52
+     6c6:	f1 e0       	ldi	r31, 0x01	; 1
+     6c8:	83 85       	ldd	r24, Z+11	; 0x0b
+     6ca:	8f 5f       	subi	r24, 0xFF	; 255
+     6cc:	83 87       	std	Z+11, r24	; 0x0b
+     6ce:	e4 e3       	ldi	r30, 0x34	; 52
+     6d0:	f1 e0       	ldi	r31, 0x01	; 1
+     6d2:	81 e0       	ldi	r24, 0x01	; 1
+     6d4:	87 83       	std	Z+7, r24	; 0x07
+     6d6:	84 81       	ldd	r24, Z+4	; 0x04
+     6d8:	95 81       	ldd	r25, Z+5	; 0x05
+     6da:	89 2b       	or	r24, r25
+     6dc:	99 f5       	brne	.+102    	; 0x744 <ProcessIgnitionProtection+0x144>
+     6de:	80 ed       	ldi	r24, 0xD0	; 208
+     6e0:	97 e0       	ldi	r25, 0x07	; 7
+     6e2:	90 93 39 01 	sts	0x0139, r25	; 0x800139 <igncProt+0x5>
+     6e6:	80 93 38 01 	sts	0x0138, r24	; 0x800138 <igncProt+0x4>
+     6ea:	2c c0       	rjmp	.+88     	; 0x744 <ProcessIgnitionProtection+0x144>
+     6ec:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <igncProt+0x4>
+     6f0:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <igncProt+0x5>
+     6f4:	89 2b       	or	r24, r25
+     6f6:	41 f0       	breq	.+16     	; 0x708 <ProcessIgnitionProtection+0x108>
+     6f8:	e4 e3       	ldi	r30, 0x34	; 52
+     6fa:	f1 e0       	ldi	r31, 0x01	; 1
+     6fc:	84 81       	ldd	r24, Z+4	; 0x04
+     6fe:	95 81       	ldd	r25, Z+5	; 0x05
+     700:	01 97       	sbiw	r24, 0x01	; 1
+     702:	95 83       	std	Z+5, r25	; 0x05
+     704:	84 83       	std	Z+4, r24	; 0x04
+     706:	1e c0       	rjmp	.+60     	; 0x744 <ProcessIgnitionProtection+0x144>
+     708:	80 91 3b 01 	lds	r24, 0x013B	; 0x80013b <igncProt+0x7>
+     70c:	88 23       	and	r24, r24
+     70e:	51 f0       	breq	.+20     	; 0x724 <ProcessIgnitionProtection+0x124>
+     710:	e4 e3       	ldi	r30, 0x34	; 52
+     712:	f1 e0       	ldi	r31, 0x01	; 1
+     714:	17 82       	std	Z+7, r1	; 0x07
+     716:	81 e0       	ldi	r24, 0x01	; 1
+     718:	82 87       	std	Z+10, r24	; 0x0a
+     71a:	80 ed       	ldi	r24, 0xD0	; 208
+     71c:	97 e0       	ldi	r25, 0x07	; 7
+     71e:	95 87       	std	Z+13, r25	; 0x0d
+     720:	84 87       	std	Z+12, r24	; 0x0c
+     722:	10 c0       	rjmp	.+32     	; 0x744 <ProcessIgnitionProtection+0x144>
+     724:	80 91 40 01 	lds	r24, 0x0140	; 0x800140 <igncProt+0xc>
+     728:	90 91 41 01 	lds	r25, 0x0141	; 0x800141 <igncProt+0xd>
+     72c:	89 2b       	or	r24, r25
+     72e:	41 f0       	breq	.+16     	; 0x740 <ProcessIgnitionProtection+0x140>
+     730:	e4 e3       	ldi	r30, 0x34	; 52
+     732:	f1 e0       	ldi	r31, 0x01	; 1
+     734:	84 85       	ldd	r24, Z+12	; 0x0c
+     736:	95 85       	ldd	r25, Z+13	; 0x0d
+     738:	01 97       	sbiw	r24, 0x01	; 1
+     73a:	95 87       	std	Z+13, r25	; 0x0d
+     73c:	84 87       	std	Z+12, r24	; 0x0c
+     73e:	02 c0       	rjmp	.+4      	; 0x744 <ProcessIgnitionProtection+0x144>
+     740:	10 92 3f 01 	sts	0x013F, r1	; 0x80013f <igncProt+0xb>
+     744:	80 91 3b 01 	lds	r24, 0x013B	; 0x80013b <igncProt+0x7>
+     748:	08 95       	ret
+
+0000074a <ProcessIsolatorProtection>:
+     74a:	9c 01       	movw	r18, r24
+     74c:	90 91 30 01 	lds	r25, 0x0130	; 0x800130 <isolState>
+     750:	92 30       	cpi	r25, 0x02	; 2
+     752:	41 f4       	brne	.+16     	; 0x764 <ProcessIsolatorProtection+0x1a>
+     754:	62 17       	cp	r22, r18
+     756:	73 07       	cpc	r23, r19
+     758:	28 f4       	brcc	.+10     	; 0x764 <ProcessIsolatorProtection+0x1a>
+     75a:	c9 01       	movw	r24, r18
+     75c:	86 1b       	sub	r24, r22
+     75e:	97 0b       	sbc	r25, r23
+     760:	bc 01       	movw	r22, r24
+     762:	06 c0       	rjmp	.+12     	; 0x770 <ProcessIsolatorProtection+0x26>
+     764:	80 91 30 01 	lds	r24, 0x0130	; 0x800130 <isolState>
+     768:	81 30       	cpi	r24, 0x01	; 1
+     76a:	11 f0       	breq	.+4      	; 0x770 <ProcessIsolatorProtection+0x26>
+     76c:	60 e0       	ldi	r22, 0x00	; 0
+     76e:	70 e0       	ldi	r23, 0x00	; 0
+     770:	ef e1       	ldi	r30, 0x1F	; 31
+     772:	f1 e0       	ldi	r31, 0x01	; 1
+     774:	11 82       	std	Z+1, r1	; 0x01
+     776:	12 82       	std	Z+2, r1	; 0x02
+     778:	65 3f       	cpi	r22, 0xF5	; 245
+     77a:	91 e0       	ldi	r25, 0x01	; 1
+     77c:	79 07       	cpc	r23, r25
+     77e:	20 f0       	brcs	.+8      	; 0x788 <ProcessIsolatorProtection+0x3e>
+     780:	81 e0       	ldi	r24, 0x01	; 1
+     782:	80 93 1f 01 	sts	0x011F, r24	; 0x80011f <isolProt>
+     786:	02 c0       	rjmp	.+4      	; 0x78c <ProcessIsolatorProtection+0x42>
+     788:	10 92 1f 01 	sts	0x011F, r1	; 0x80011f <isolProt>
+     78c:	80 91 28 01 	lds	r24, 0x0128	; 0x800128 <isolProt+0x9>
+     790:	88 23       	and	r24, r24
+     792:	29 f0       	breq	.+10     	; 0x79e <ProcessIsolatorProtection+0x54>
+     794:	ef e1       	ldi	r30, 0x1F	; 31
+     796:	f1 e0       	ldi	r31, 0x01	; 1
+     798:	81 85       	ldd	r24, Z+9	; 0x09
+     79a:	81 50       	subi	r24, 0x01	; 1
+     79c:	81 87       	std	Z+9, r24	; 0x09
+     79e:	80 91 1f 01 	lds	r24, 0x011F	; 0x80011f <isolProt>
+     7a2:	88 23       	and	r24, r24
+     7a4:	b9 f0       	breq	.+46     	; 0x7d4 <ProcessIsolatorProtection+0x8a>
+     7a6:	80 91 28 01 	lds	r24, 0x0128	; 0x800128 <isolProt+0x9>
+     7aa:	81 11       	cpse	r24, r1
+     7ac:	13 c0       	rjmp	.+38     	; 0x7d4 <ProcessIsolatorProtection+0x8a>
+     7ae:	cb 01       	movw	r24, r22
+     7b0:	64 ef       	ldi	r22, 0xF4	; 244
+     7b2:	71 e0       	ldi	r23, 0x01	; 1
+     7b4:	5f d5       	rcall	.+2750   	; 0x1274 <__udivmodhi4>
+     7b6:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <isolProt+0x3>
+     7ba:	80 95       	com	r24
+     7bc:	86 17       	cp	r24, r22
+     7be:	20 f4       	brcc	.+8      	; 0x7c8 <ProcessIsolatorProtection+0x7e>
+     7c0:	8f ef       	ldi	r24, 0xFF	; 255
+     7c2:	80 93 22 01 	sts	0x0122, r24	; 0x800122 <isolProt+0x3>
+     7c6:	0f c0       	rjmp	.+30     	; 0x7e6 <ProcessIsolatorProtection+0x9c>
+     7c8:	ef e1       	ldi	r30, 0x1F	; 31
+     7ca:	f1 e0       	ldi	r31, 0x01	; 1
+     7cc:	83 81       	ldd	r24, Z+3	; 0x03
+     7ce:	68 0f       	add	r22, r24
+     7d0:	63 83       	std	Z+3, r22	; 0x03
+     7d2:	09 c0       	rjmp	.+18     	; 0x7e6 <ProcessIsolatorProtection+0x9c>
+     7d4:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <isolProt+0x3>
+     7d8:	88 23       	and	r24, r24
+     7da:	29 f0       	breq	.+10     	; 0x7e6 <ProcessIsolatorProtection+0x9c>
+     7dc:	ef e1       	ldi	r30, 0x1F	; 31
+     7de:	f1 e0       	ldi	r31, 0x01	; 1
+     7e0:	83 81       	ldd	r24, Z+3	; 0x03
+     7e2:	81 50       	subi	r24, 0x01	; 1
+     7e4:	83 83       	std	Z+3, r24	; 0x03
+     7e6:	80 91 20 01 	lds	r24, 0x0120	; 0x800120 <isolProt+0x1>
+     7ea:	81 11       	cpse	r24, r1
+     7ec:	08 c0       	rjmp	.+16     	; 0x7fe <ProcessIsolatorProtection+0xb4>
+     7ee:	80 91 21 01 	lds	r24, 0x0121	; 0x800121 <isolProt+0x2>
+     7f2:	81 11       	cpse	r24, r1
+     7f4:	04 c0       	rjmp	.+8      	; 0x7fe <ProcessIsolatorProtection+0xb4>
+     7f6:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <isolProt+0x3>
+     7fa:	83 30       	cpi	r24, 0x03	; 3
+     7fc:	e0 f0       	brcs	.+56     	; 0x836 <ProcessIsolatorProtection+0xec>
+     7fe:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <isolProt+0x7>
+     802:	81 11       	cpse	r24, r1
+     804:	09 c0       	rjmp	.+18     	; 0x818 <ProcessIsolatorProtection+0xce>
+     806:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <isolProt+0xb>
+     80a:	8f 3f       	cpi	r24, 0xFF	; 255
+     80c:	29 f0       	breq	.+10     	; 0x818 <ProcessIsolatorProtection+0xce>
+     80e:	ef e1       	ldi	r30, 0x1F	; 31
+     810:	f1 e0       	ldi	r31, 0x01	; 1
+     812:	83 85       	ldd	r24, Z+11	; 0x0b
+     814:	8f 5f       	subi	r24, 0xFF	; 255
+     816:	83 87       	std	Z+11, r24	; 0x0b
+     818:	ef e1       	ldi	r30, 0x1F	; 31
+     81a:	f1 e0       	ldi	r31, 0x01	; 1
+     81c:	81 e0       	ldi	r24, 0x01	; 1
+     81e:	87 83       	std	Z+7, r24	; 0x07
+     820:	84 81       	ldd	r24, Z+4	; 0x04
+     822:	95 81       	ldd	r25, Z+5	; 0x05
+     824:	89 2b       	or	r24, r25
+     826:	99 f5       	brne	.+102    	; 0x88e <ProcessIsolatorProtection+0x144>
+     828:	80 ed       	ldi	r24, 0xD0	; 208
+     82a:	97 e0       	ldi	r25, 0x07	; 7
+     82c:	90 93 24 01 	sts	0x0124, r25	; 0x800124 <isolProt+0x5>
+     830:	80 93 23 01 	sts	0x0123, r24	; 0x800123 <isolProt+0x4>
+     834:	2c c0       	rjmp	.+88     	; 0x88e <ProcessIsolatorProtection+0x144>
+     836:	80 91 23 01 	lds	r24, 0x0123	; 0x800123 <isolProt+0x4>
+     83a:	90 91 24 01 	lds	r25, 0x0124	; 0x800124 <isolProt+0x5>
+     83e:	89 2b       	or	r24, r25
+     840:	41 f0       	breq	.+16     	; 0x852 <ProcessIsolatorProtection+0x108>
+     842:	ef e1       	ldi	r30, 0x1F	; 31
+     844:	f1 e0       	ldi	r31, 0x01	; 1
+     846:	84 81       	ldd	r24, Z+4	; 0x04
+     848:	95 81       	ldd	r25, Z+5	; 0x05
+     84a:	01 97       	sbiw	r24, 0x01	; 1
+     84c:	95 83       	std	Z+5, r25	; 0x05
+     84e:	84 83       	std	Z+4, r24	; 0x04
+     850:	1e c0       	rjmp	.+60     	; 0x88e <ProcessIsolatorProtection+0x144>
+     852:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <isolProt+0x7>
+     856:	88 23       	and	r24, r24
+     858:	51 f0       	breq	.+20     	; 0x86e <ProcessIsolatorProtection+0x124>
+     85a:	ef e1       	ldi	r30, 0x1F	; 31
+     85c:	f1 e0       	ldi	r31, 0x01	; 1
+     85e:	17 82       	std	Z+7, r1	; 0x07
+     860:	81 e0       	ldi	r24, 0x01	; 1
+     862:	82 87       	std	Z+10, r24	; 0x0a
+     864:	80 ed       	ldi	r24, 0xD0	; 208
+     866:	97 e0       	ldi	r25, 0x07	; 7
+     868:	95 87       	std	Z+13, r25	; 0x0d
+     86a:	84 87       	std	Z+12, r24	; 0x0c
+     86c:	10 c0       	rjmp	.+32     	; 0x88e <ProcessIsolatorProtection+0x144>
+     86e:	80 91 2b 01 	lds	r24, 0x012B	; 0x80012b <isolProt+0xc>
+     872:	90 91 2c 01 	lds	r25, 0x012C	; 0x80012c <isolProt+0xd>
+     876:	89 2b       	or	r24, r25
+     878:	41 f0       	breq	.+16     	; 0x88a <ProcessIsolatorProtection+0x140>
+     87a:	ef e1       	ldi	r30, 0x1F	; 31
+     87c:	f1 e0       	ldi	r31, 0x01	; 1
+     87e:	84 85       	ldd	r24, Z+12	; 0x0c
+     880:	95 85       	ldd	r25, Z+13	; 0x0d
+     882:	01 97       	sbiw	r24, 0x01	; 1
+     884:	95 87       	std	Z+13, r25	; 0x0d
+     886:	84 87       	std	Z+12, r24	; 0x0c
+     888:	02 c0       	rjmp	.+4      	; 0x88e <ProcessIsolatorProtection+0x144>
+     88a:	10 92 2a 01 	sts	0x012A, r1	; 0x80012a <isolProt+0xb>
+     88e:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <isolProt+0x7>
+     892:	08 95       	ret
+
+00000894 <StateToHWLevel>:
+     894:	62 30       	cpi	r22, 0x02	; 2
+     896:	99 f0       	breq	.+38     	; 0x8be <StateToHWLevel+0x2a>
+     898:	63 30       	cpi	r22, 0x03	; 3
+     89a:	19 f0       	breq	.+6      	; 0x8a2 <StateToHWLevel+0xe>
+     89c:	61 30       	cpi	r22, 0x01	; 1
+     89e:	99 f4       	brne	.+38     	; 0x8c6 <StateToHWLevel+0x32>
+     8a0:	0a c0       	rjmp	.+20     	; 0x8b6 <StateToHWLevel+0x22>
+     8a2:	44 23       	and	r20, r20
+     8a4:	21 f0       	breq	.+8      	; 0x8ae <StateToHWLevel+0x1a>
+     8a6:	77 23       	and	r23, r23
+     8a8:	81 f0       	breq	.+32     	; 0x8ca <StateToHWLevel+0x36>
+     8aa:	81 e0       	ldi	r24, 0x01	; 1
+     8ac:	08 95       	ret
+     8ae:	77 23       	and	r23, r23
+     8b0:	71 f0       	breq	.+28     	; 0x8ce <StateToHWLevel+0x3a>
+     8b2:	82 e0       	ldi	r24, 0x02	; 2
+     8b4:	08 95       	ret
+     8b6:	44 23       	and	r20, r20
+     8b8:	61 f0       	breq	.+24     	; 0x8d2 <StateToHWLevel+0x3e>
+     8ba:	81 e0       	ldi	r24, 0x01	; 1
+     8bc:	08 95       	ret
+     8be:	44 23       	and	r20, r20
+     8c0:	51 f0       	breq	.+20     	; 0x8d6 <StateToHWLevel+0x42>
+     8c2:	82 e0       	ldi	r24, 0x02	; 2
+     8c4:	08 95       	ret
+     8c6:	80 e0       	ldi	r24, 0x00	; 0
+     8c8:	08 95       	ret
+     8ca:	82 e0       	ldi	r24, 0x02	; 2
+     8cc:	08 95       	ret
+     8ce:	81 e0       	ldi	r24, 0x01	; 1
+     8d0:	08 95       	ret
+     8d2:	80 e0       	ldi	r24, 0x00	; 0
+     8d4:	08 95       	ret
+     8d6:	80 e0       	ldi	r24, 0x00	; 0
+     8d8:	08 95       	ret
+
+000008da <HAL_Init>:
+     8da:	82 b3       	in	r24, 0x12	; 18
+     8dc:	82 60       	ori	r24, 0x02	; 2
+     8de:	82 bb       	out	0x12, r24	; 18
+     8e0:	82 b3       	in	r24, 0x12	; 18
+     8e2:	80 62       	ori	r24, 0x20	; 32
+     8e4:	82 bb       	out	0x12, r24	; 18
+     8e6:	85 b1       	in	r24, 0x05	; 5
+     8e8:	8c 73       	andi	r24, 0x3C	; 60
+     8ea:	85 b9       	out	0x05, r24	; 5
+     8ec:	84 b1       	in	r24, 0x04	; 4
+     8ee:	83 6c       	ori	r24, 0xC3	; 195
+     8f0:	84 b9       	out	0x04, r24	; 4
+     8f2:	10 92 30 01 	sts	0x0130, r1	; 0x800130 <isolState>
+     8f6:	10 92 45 01 	sts	0x0145, r1	; 0x800145 <igncState>
+     8fa:	08 95       	ret
+
+000008fc <HAL_SetIgnition>:
+     8fc:	90 91 45 01 	lds	r25, 0x0145	; 0x800145 <igncState>
+     900:	98 13       	cpse	r25, r24
+     902:	10 92 3d 01 	sts	0x013D, r1	; 0x80013d <igncProt+0x9>
+     906:	82 30       	cpi	r24, 0x02	; 2
+     908:	51 f4       	brne	.+20     	; 0x91e <HAL_SetIgnition+0x22>
+     90a:	85 b1       	in	r24, 0x05	; 5
+     90c:	8e 7f       	andi	r24, 0xFE	; 254
+     90e:	85 b9       	out	0x05, r24	; 5
+     910:	85 b1       	in	r24, 0x05	; 5
+     912:	80 64       	ori	r24, 0x40	; 64
+     914:	85 b9       	out	0x05, r24	; 5
+     916:	82 e0       	ldi	r24, 0x02	; 2
+     918:	80 93 45 01 	sts	0x0145, r24	; 0x800145 <igncState>
+     91c:	08 95       	ret
+     91e:	81 30       	cpi	r24, 0x01	; 1
+     920:	51 f4       	brne	.+20     	; 0x936 <HAL_SetIgnition+0x3a>
+     922:	85 b1       	in	r24, 0x05	; 5
+     924:	8f 7b       	andi	r24, 0xBF	; 191
+     926:	85 b9       	out	0x05, r24	; 5
+     928:	85 b1       	in	r24, 0x05	; 5
+     92a:	81 60       	ori	r24, 0x01	; 1
+     92c:	85 b9       	out	0x05, r24	; 5
+     92e:	81 e0       	ldi	r24, 0x01	; 1
+     930:	80 93 45 01 	sts	0x0145, r24	; 0x800145 <igncState>
+     934:	08 95       	ret
+     936:	85 b1       	in	r24, 0x05	; 5
+     938:	8e 7b       	andi	r24, 0xBE	; 190
+     93a:	85 b9       	out	0x05, r24	; 5
+     93c:	10 92 45 01 	sts	0x0145, r1	; 0x800145 <igncState>
+     940:	08 95       	ret
+
+00000942 <HAL_SetIsolator>:
+     942:	90 91 30 01 	lds	r25, 0x0130	; 0x800130 <isolState>
+     946:	98 13       	cpse	r25, r24
+     948:	10 92 28 01 	sts	0x0128, r1	; 0x800128 <isolProt+0x9>
+     94c:	82 30       	cpi	r24, 0x02	; 2
+     94e:	51 f4       	brne	.+20     	; 0x964 <HAL_SetIsolator+0x22>
+     950:	85 b1       	in	r24, 0x05	; 5
+     952:	8d 7f       	andi	r24, 0xFD	; 253
+     954:	85 b9       	out	0x05, r24	; 5
+     956:	85 b1       	in	r24, 0x05	; 5
+     958:	80 68       	ori	r24, 0x80	; 128
+     95a:	85 b9       	out	0x05, r24	; 5
+     95c:	82 e0       	ldi	r24, 0x02	; 2
+     95e:	80 93 30 01 	sts	0x0130, r24	; 0x800130 <isolState>
+     962:	08 95       	ret
+     964:	81 30       	cpi	r24, 0x01	; 1
+     966:	51 f4       	brne	.+20     	; 0x97c <HAL_SetIsolator+0x3a>
+     968:	85 b1       	in	r24, 0x05	; 5
+     96a:	8f 77       	andi	r24, 0x7F	; 127
+     96c:	85 b9       	out	0x05, r24	; 5
+     96e:	85 b1       	in	r24, 0x05	; 5
+     970:	82 60       	ori	r24, 0x02	; 2
+     972:	85 b9       	out	0x05, r24	; 5
+     974:	81 e0       	ldi	r24, 0x01	; 1
+     976:	80 93 30 01 	sts	0x0130, r24	; 0x800130 <isolState>
+     97a:	08 95       	ret
+     97c:	85 b1       	in	r24, 0x05	; 5
+     97e:	8d 77       	andi	r24, 0x7D	; 125
+     980:	85 b9       	out	0x05, r24	; 5
+     982:	10 92 30 01 	sts	0x0130, r1	; 0x800130 <isolState>
+     986:	08 95       	ret
+
+00000988 <OUTDRV_Init>:
+     988:	0f 93       	push	r16
+     98a:	1f 93       	push	r17
+     98c:	cf 93       	push	r28
+     98e:	df 93       	push	r29
+     990:	ec 01       	movw	r28, r24
+     992:	8b 01       	movw	r16, r22
+     994:	a2 df       	rcall	.-188    	; 0x8da <HAL_Init>
+     996:	e5 e4       	ldi	r30, 0x45	; 69
+     998:	f1 e0       	ldi	r31, 0x01	; 1
+     99a:	11 82       	std	Z+1, r1	; 0x01
+     99c:	12 82       	std	Z+2, r1	; 0x02
+     99e:	13 82       	std	Z+3, r1	; 0x03
+     9a0:	d8 01       	movw	r26, r16
+     9a2:	8c 91       	ld	r24, X
+     9a4:	e2 e4       	ldi	r30, 0x42	; 66
+     9a6:	f1 e0       	ldi	r31, 0x01	; 1
+     9a8:	80 83       	st	Z, r24
+     9aa:	11 96       	adiw	r26, 0x01	; 1
+     9ac:	8c 91       	ld	r24, X
+     9ae:	11 97       	sbiw	r26, 0x01	; 1
+     9b0:	81 83       	std	Z+1, r24	; 0x01
+     9b2:	12 96       	adiw	r26, 0x02	; 2
+     9b4:	8c 91       	ld	r24, X
+     9b6:	82 83       	std	Z+2, r24	; 0x02
+     9b8:	e4 e3       	ldi	r30, 0x34	; 52
+     9ba:	f1 e0       	ldi	r31, 0x01	; 1
+     9bc:	10 82       	st	Z, r1
+     9be:	11 82       	std	Z+1, r1	; 0x01
+     9c0:	12 82       	std	Z+2, r1	; 0x02
+     9c2:	13 82       	std	Z+3, r1	; 0x03
+     9c4:	15 82       	std	Z+5, r1	; 0x05
+     9c6:	14 82       	std	Z+4, r1	; 0x04
+     9c8:	16 82       	std	Z+6, r1	; 0x06
+     9ca:	17 82       	std	Z+7, r1	; 0x07
+     9cc:	10 86       	std	Z+8, r1	; 0x08
+     9ce:	11 86       	std	Z+9, r1	; 0x09
+     9d0:	12 86       	std	Z+10, r1	; 0x0a
+     9d2:	13 86       	std	Z+11, r1	; 0x0b
+     9d4:	15 86       	std	Z+13, r1	; 0x0d
+     9d6:	14 86       	std	Z+12, r1	; 0x0c
+     9d8:	e0 e3       	ldi	r30, 0x30	; 48
+     9da:	f1 e0       	ldi	r31, 0x01	; 1
+     9dc:	11 82       	std	Z+1, r1	; 0x01
+     9de:	12 82       	std	Z+2, r1	; 0x02
+     9e0:	13 82       	std	Z+3, r1	; 0x03
+     9e2:	88 81       	ld	r24, Y
+     9e4:	ed e2       	ldi	r30, 0x2D	; 45
+     9e6:	f1 e0       	ldi	r31, 0x01	; 1
+     9e8:	80 83       	st	Z, r24
+     9ea:	89 81       	ldd	r24, Y+1	; 0x01
+     9ec:	81 83       	std	Z+1, r24	; 0x01
+     9ee:	8a 81       	ldd	r24, Y+2	; 0x02
+     9f0:	82 83       	std	Z+2, r24	; 0x02
+     9f2:	ef e1       	ldi	r30, 0x1F	; 31
+     9f4:	f1 e0       	ldi	r31, 0x01	; 1
+     9f6:	10 82       	st	Z, r1
+     9f8:	11 82       	std	Z+1, r1	; 0x01
+     9fa:	12 82       	std	Z+2, r1	; 0x02
+     9fc:	13 82       	std	Z+3, r1	; 0x03
+     9fe:	15 82       	std	Z+5, r1	; 0x05
+     a00:	14 82       	std	Z+4, r1	; 0x04
+     a02:	16 82       	std	Z+6, r1	; 0x06
+     a04:	17 82       	std	Z+7, r1	; 0x07
+     a06:	10 86       	std	Z+8, r1	; 0x08
+     a08:	11 86       	std	Z+9, r1	; 0x09
+     a0a:	12 86       	std	Z+10, r1	; 0x0a
+     a0c:	13 86       	std	Z+11, r1	; 0x0b
+     a0e:	15 86       	std	Z+13, r1	; 0x0d
+     a10:	14 86       	std	Z+12, r1	; 0x0c
+     a12:	df 91       	pop	r29
+     a14:	cf 91       	pop	r28
+     a16:	1f 91       	pop	r17
+     a18:	0f 91       	pop	r16
+     a1a:	08 95       	ret
+
+00000a1c <OUTDRV_SetOutput>:
+     a1c:	81 30       	cpi	r24, 0x01	; 1
+     a1e:	19 f0       	breq	.+6      	; 0xa26 <OUTDRV_SetOutput+0xa>
+     a20:	82 30       	cpi	r24, 0x02	; 2
+     a22:	29 f0       	breq	.+10     	; 0xa2e <OUTDRV_SetOutput+0x12>
+     a24:	08 95       	ret
+     a26:	81 e0       	ldi	r24, 0x01	; 1
+     a28:	80 93 31 01 	sts	0x0131, r24	; 0x800131 <isolState+0x1>
+     a2c:	08 95       	ret
+     a2e:	81 e0       	ldi	r24, 0x01	; 1
+     a30:	80 93 46 01 	sts	0x0146, r24	; 0x800146 <igncState+0x1>
+     a34:	08 95       	ret
+
+00000a36 <OUTDRV_ResetOutput>:
+     a36:	81 30       	cpi	r24, 0x01	; 1
+     a38:	19 f0       	breq	.+6      	; 0xa40 <OUTDRV_ResetOutput+0xa>
+     a3a:	82 30       	cpi	r24, 0x02	; 2
+     a3c:	21 f0       	breq	.+8      	; 0xa46 <OUTDRV_ResetOutput+0x10>
+     a3e:	08 95       	ret
+     a40:	10 92 31 01 	sts	0x0131, r1	; 0x800131 <isolState+0x1>
+     a44:	08 95       	ret
+     a46:	10 92 46 01 	sts	0x0146, r1	; 0x800146 <igncState+0x1>
+     a4a:	08 95       	ret
+
+00000a4c <OUTDRV_EnableOutput>:
+     a4c:	81 30       	cpi	r24, 0x01	; 1
+     a4e:	19 f0       	breq	.+6      	; 0xa56 <OUTDRV_EnableOutput+0xa>
+     a50:	82 30       	cpi	r24, 0x02	; 2
+     a52:	29 f0       	breq	.+10     	; 0xa5e <OUTDRV_EnableOutput+0x12>
+     a54:	08 95       	ret
+     a56:	81 e0       	ldi	r24, 0x01	; 1
+     a58:	80 93 33 01 	sts	0x0133, r24	; 0x800133 <isolState+0x3>
+     a5c:	08 95       	ret
+     a5e:	81 e0       	ldi	r24, 0x01	; 1
+     a60:	80 93 48 01 	sts	0x0148, r24	; 0x800148 <igncState+0x3>
+     a64:	08 95       	ret
+
+00000a66 <OUTDRV_DisableOutput>:
+     a66:	81 30       	cpi	r24, 0x01	; 1
+     a68:	19 f0       	breq	.+6      	; 0xa70 <OUTDRV_DisableOutput+0xa>
+     a6a:	82 30       	cpi	r24, 0x02	; 2
+     a6c:	21 f0       	breq	.+8      	; 0xa76 <OUTDRV_DisableOutput+0x10>
+     a6e:	08 95       	ret
+     a70:	10 92 33 01 	sts	0x0133, r1	; 0x800133 <isolState+0x3>
+     a74:	08 95       	ret
+     a76:	10 92 48 01 	sts	0x0148, r1	; 0x800148 <igncState+0x3>
+     a7a:	08 95       	ret
+
+00000a7c <OUTDRV_GetRealOutput>:
+     a7c:	81 30       	cpi	r24, 0x01	; 1
+     a7e:	19 f0       	breq	.+6      	; 0xa86 <OUTDRV_GetRealOutput+0xa>
+     a80:	82 30       	cpi	r24, 0x02	; 2
+     a82:	21 f0       	breq	.+8      	; 0xa8c <OUTDRV_GetRealOutput+0x10>
+     a84:	06 c0       	rjmp	.+12     	; 0xa92 <OUTDRV_GetRealOutput+0x16>
+     a86:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <isolState+0x2>
+     a8a:	08 95       	ret
+     a8c:	80 91 47 01 	lds	r24, 0x0147	; 0x800147 <igncState+0x2>
+     a90:	08 95       	ret
+     a92:	80 e0       	ldi	r24, 0x00	; 0
+     a94:	08 95       	ret
+
+00000a96 <OUTDRV_ProcessLogic>:
+     a96:	cf 93       	push	r28
+     a98:	df 93       	push	r29
+     a9a:	80 91 3c 01 	lds	r24, 0x013C	; 0x80013c <igncProt+0x8>
+     a9e:	88 23       	and	r24, r24
+     aa0:	31 f0       	breq	.+12     	; 0xaae <OUTDRV_ProcessLogic+0x18>
+     aa2:	e4 e3       	ldi	r30, 0x34	; 52
+     aa4:	f1 e0       	ldi	r31, 0x01	; 1
+     aa6:	80 85       	ldd	r24, Z+8	; 0x08
+     aa8:	81 50       	subi	r24, 0x01	; 1
+     aaa:	80 87       	std	Z+8, r24	; 0x08
+     aac:	1e c0       	rjmp	.+60     	; 0xaea <OUTDRV_ProcessLogic+0x54>
+     aae:	80 91 3b 01 	lds	r24, 0x013B	; 0x80013b <igncProt+0x7>
+     ab2:	81 11       	cpse	r24, r1
+     ab4:	08 c0       	rjmp	.+16     	; 0xac6 <OUTDRV_ProcessLogic+0x30>
+     ab6:	80 91 3a 01 	lds	r24, 0x013A	; 0x80013a <igncProt+0x6>
+     aba:	81 11       	cpse	r24, r1
+     abc:	04 c0       	rjmp	.+8      	; 0xac6 <OUTDRV_ProcessLogic+0x30>
+     abe:	80 91 48 01 	lds	r24, 0x0148	; 0x800148 <igncState+0x3>
+     ac2:	81 11       	cpse	r24, r1
+     ac4:	05 c0       	rjmp	.+10     	; 0xad0 <OUTDRV_ProcessLogic+0x3a>
+     ac6:	80 e0       	ldi	r24, 0x00	; 0
+     ac8:	19 df       	rcall	.-462    	; 0x8fc <HAL_SetIgnition>
+     aca:	10 92 47 01 	sts	0x0147, r1	; 0x800147 <igncState+0x2>
+     ace:	0d c0       	rjmp	.+26     	; 0xaea <OUTDRV_ProcessLogic+0x54>
+     ad0:	c5 e4       	ldi	r28, 0x45	; 69
+     ad2:	d1 e0       	ldi	r29, 0x01	; 1
+     ad4:	49 81       	ldd	r20, Y+1	; 0x01
+     ad6:	60 91 42 01 	lds	r22, 0x0142	; 0x800142 <igncCfg>
+     ada:	70 91 43 01 	lds	r23, 0x0143	; 0x800143 <igncCfg+0x1>
+     ade:	80 91 44 01 	lds	r24, 0x0144	; 0x800144 <igncCfg+0x2>
+     ae2:	d8 de       	rcall	.-592    	; 0x894 <StateToHWLevel>
+     ae4:	0b df       	rcall	.-490    	; 0x8fc <HAL_SetIgnition>
+     ae6:	89 81       	ldd	r24, Y+1	; 0x01
+     ae8:	8a 83       	std	Y+2, r24	; 0x02
+     aea:	80 91 27 01 	lds	r24, 0x0127	; 0x800127 <isolProt+0x8>
+     aee:	88 23       	and	r24, r24
+     af0:	31 f0       	breq	.+12     	; 0xafe <OUTDRV_ProcessLogic+0x68>
+     af2:	ef e1       	ldi	r30, 0x1F	; 31
+     af4:	f1 e0       	ldi	r31, 0x01	; 1
+     af6:	80 85       	ldd	r24, Z+8	; 0x08
+     af8:	81 50       	subi	r24, 0x01	; 1
+     afa:	80 87       	std	Z+8, r24	; 0x08
+     afc:	1e c0       	rjmp	.+60     	; 0xb3a <OUTDRV_ProcessLogic+0xa4>
+     afe:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <isolProt+0x7>
+     b02:	81 11       	cpse	r24, r1
+     b04:	08 c0       	rjmp	.+16     	; 0xb16 <OUTDRV_ProcessLogic+0x80>
+     b06:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <isolProt+0x6>
+     b0a:	81 11       	cpse	r24, r1
+     b0c:	04 c0       	rjmp	.+8      	; 0xb16 <OUTDRV_ProcessLogic+0x80>
+     b0e:	80 91 33 01 	lds	r24, 0x0133	; 0x800133 <isolState+0x3>
+     b12:	81 11       	cpse	r24, r1
+     b14:	05 c0       	rjmp	.+10     	; 0xb20 <OUTDRV_ProcessLogic+0x8a>
+     b16:	80 e0       	ldi	r24, 0x00	; 0
+     b18:	14 df       	rcall	.-472    	; 0x942 <HAL_SetIsolator>
+     b1a:	10 92 32 01 	sts	0x0132, r1	; 0x800132 <isolState+0x2>
+     b1e:	0d c0       	rjmp	.+26     	; 0xb3a <OUTDRV_ProcessLogic+0xa4>
+     b20:	c0 e3       	ldi	r28, 0x30	; 48
+     b22:	d1 e0       	ldi	r29, 0x01	; 1
+     b24:	49 81       	ldd	r20, Y+1	; 0x01
+     b26:	60 91 2d 01 	lds	r22, 0x012D	; 0x80012d <isolCfg>
+     b2a:	70 91 2e 01 	lds	r23, 0x012E	; 0x80012e <isolCfg+0x1>
+     b2e:	80 91 2f 01 	lds	r24, 0x012F	; 0x80012f <isolCfg+0x2>
+     b32:	b0 de       	rcall	.-672    	; 0x894 <StateToHWLevel>
+     b34:	06 df       	rcall	.-500    	; 0x942 <HAL_SetIsolator>
+     b36:	89 81       	ldd	r24, Y+1	; 0x01
+     b38:	8a 83       	std	Y+2, r24	; 0x02
+     b3a:	df 91       	pop	r29
+     b3c:	cf 91       	pop	r28
+     b3e:	08 95       	ret
+
+00000b40 <OUTDRV_ProcessProtection>:
+     b40:	0f 93       	push	r16
+     b42:	1f 93       	push	r17
+     b44:	cf 93       	push	r28
+     b46:	df 93       	push	r29
+     b48:	ea 01       	movw	r28, r20
+     b4a:	89 01       	movw	r16, r18
+     b4c:	fe dd       	rcall	.-1028   	; 0x74a <ProcessIsolatorProtection>
+     b4e:	b8 01       	movw	r22, r16
+     b50:	ce 01       	movw	r24, r28
+     b52:	56 dd       	rcall	.-1364   	; 0x600 <ProcessIgnitionProtection>
+     b54:	df 91       	pop	r29
+     b56:	cf 91       	pop	r28
+     b58:	1f 91       	pop	r17
+     b5a:	0f 91       	pop	r16
+     b5c:	08 95       	ret
+
+00000b5e <OUTDRV_GetFault>:
+     b5e:	81 30       	cpi	r24, 0x01	; 1
+     b60:	19 f0       	breq	.+6      	; 0xb68 <OUTDRV_GetFault+0xa>
+     b62:	82 30       	cpi	r24, 0x02	; 2
+     b64:	59 f0       	breq	.+22     	; 0xb7c <OUTDRV_GetFault+0x1e>
+     b66:	14 c0       	rjmp	.+40     	; 0xb90 <OUTDRV_GetFault+0x32>
+     b68:	80 91 26 01 	lds	r24, 0x0126	; 0x800126 <isolProt+0x7>
+     b6c:	81 11       	cpse	r24, r1
+     b6e:	12 c0       	rjmp	.+36     	; 0xb94 <OUTDRV_GetFault+0x36>
+     b70:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <isolProt+0x6>
+     b74:	88 23       	and	r24, r24
+     b76:	89 f0       	breq	.+34     	; 0xb9a <OUTDRV_GetFault+0x3c>
+     b78:	81 e0       	ldi	r24, 0x01	; 1
+     b7a:	08 95       	ret
+     b7c:	80 91 3b 01 	lds	r24, 0x013B	; 0x80013b <igncProt+0x7>
+     b80:	81 11       	cpse	r24, r1
+     b82:	0a c0       	rjmp	.+20     	; 0xb98 <OUTDRV_GetFault+0x3a>
+     b84:	80 91 3a 01 	lds	r24, 0x013A	; 0x80013a <igncProt+0x6>
+     b88:	88 23       	and	r24, r24
+     b8a:	39 f0       	breq	.+14     	; 0xb9a <OUTDRV_GetFault+0x3c>
+     b8c:	81 e0       	ldi	r24, 0x01	; 1
+     b8e:	08 95       	ret
+     b90:	80 e0       	ldi	r24, 0x00	; 0
+     b92:	08 95       	ret
+     b94:	81 e0       	ldi	r24, 0x01	; 1
+     b96:	08 95       	ret
+     b98:	81 e0       	ldi	r24, 0x01	; 1
+     b9a:	08 95       	ret
+
+00000b9c <OUTDRV_GetFaultCount>:
+     b9c:	81 30       	cpi	r24, 0x01	; 1
+     b9e:	19 f0       	breq	.+6      	; 0xba6 <OUTDRV_GetFaultCount+0xa>
+     ba0:	82 30       	cpi	r24, 0x02	; 2
+     ba2:	21 f0       	breq	.+8      	; 0xbac <OUTDRV_GetFaultCount+0x10>
+     ba4:	06 c0       	rjmp	.+12     	; 0xbb2 <OUTDRV_GetFaultCount+0x16>
+     ba6:	80 91 2a 01 	lds	r24, 0x012A	; 0x80012a <isolProt+0xb>
+     baa:	08 95       	ret
+     bac:	80 91 3f 01 	lds	r24, 0x013F	; 0x80013f <igncProt+0xb>
+     bb0:	08 95       	ret
+     bb2:	80 e0       	ldi	r24, 0x00	; 0
+     bb4:	08 95       	ret
+
+00000bb6 <OUTDRV_DelayFaultExecution>:
+ * @param [in] ch Channel
+ * @param [in] cycles Cycles count
+ */
+void OUTDRV_DelayFaultExecution(uint8_t ch, uint8_t cycles)
+{
+	if(cycles>OUT_FAULT_EXEC_DELAY_LIMIT) cycles = OUT_FAULT_EXEC_DELAY_LIMIT;
+     bb6:	66 30       	cpi	r22, 0x06	; 6
+     bb8:	08 f0       	brcs	.+2      	; 0xbbc <OUTDRV_DelayFaultExecution+0x6>
+     bba:	65 e0       	ldi	r22, 0x05	; 5
+	
+	switch(ch)
+     bbc:	81 30       	cpi	r24, 0x01	; 1
+     bbe:	19 f0       	breq	.+6      	; 0xbc6 <OUTDRV_DelayFaultExecution+0x10>
+     bc0:	82 30       	cpi	r24, 0x02	; 2
+     bc2:	21 f0       	breq	.+8      	; 0xbcc <OUTDRV_DelayFaultExecution+0x16>
+     bc4:	08 95       	ret
+	{
+		case OUT_ISOL:
+			isolProt.delay_exec = cycles; 
+     bc6:	60 93 27 01 	sts	0x0127, r22	; 0x800127 <isolProt+0x8>
+			break;
+     bca:	08 95       	ret
+			
+		case OUT_IGNC:
+			igncProt.delay_exec = cycles;
+     bcc:	60 93 3c 01 	sts	0x013C, r22	; 0x80013c <igncProt+0x8>
+     bd0:	08 95       	ret
+
+00000bd2 <DelaySystem>:
+ */
+void Init_watchdog(void)
+{
+	//watchdog timer setup
+	WDTCSR |= 0x10; //Change enable
+	WDTCSR |= 0x0D; //System reset mode, 0.5s period.
+     bd2:	0f 93       	push	r16
+     bd4:	1f 93       	push	r17
+     bd6:	cf 93       	push	r28
+     bd8:	df 93       	push	r29
+     bda:	8c 01       	movw	r16, r24
+     bdc:	c0 e0       	ldi	r28, 0x00	; 0
+     bde:	d0 e0       	ldi	r29, 0x00	; 0
+     be0:	02 c0       	rjmp	.+4      	; 0xbe6 <DelaySystem+0x14>
+     be2:	61 da       	rcall	.-2878   	; 0xa6 <ADCDRV_MeasureAll>
+     be4:	21 96       	adiw	r28, 0x01	; 1
+     be6:	c0 17       	cp	r28, r16
+     be8:	d1 07       	cpc	r29, r17
+     bea:	d8 f3       	brcs	.-10     	; 0xbe2 <DelaySystem+0x10>
+     bec:	df 91       	pop	r29
+     bee:	cf 91       	pop	r28
+     bf0:	1f 91       	pop	r17
+     bf2:	0f 91       	pop	r16
+     bf4:	08 95       	ret
+
+00000bf6 <DataGathering>:
+     bf6:	0f 93       	push	r16
+     bf8:	1f 93       	push	r17
+     bfa:	cf 93       	push	r28
+     bfc:	df 93       	push	r29
+     bfe:	8c 01       	movw	r16, r24
+     c00:	c0 e0       	ldi	r28, 0x00	; 0
+     c02:	d0 e0       	ldi	r29, 0x00	; 0
+     c04:	5f c0       	rjmp	.+190    	; 0xcc4 <DataGathering+0xce>
+     c06:	4f da       	rcall	.-2914   	; 0xa6 <ADCDRV_MeasureAll>
+     c08:	80 e0       	ldi	r24, 0x00	; 0
+     c0a:	ba da       	rcall	.-2700   	; 0x180 <ADCDRV_GetValue>
+     c0c:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+     c10:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+     c14:	83 e0       	ldi	r24, 0x03	; 3
+     c16:	b4 da       	rcall	.-2712   	; 0x180 <ADCDRV_GetValue>
+     c18:	90 93 65 01 	sts	0x0165, r25	; 0x800165 <u_alt+0x1>
+     c1c:	80 93 64 01 	sts	0x0164, r24	; 0x800164 <u_alt>
+     c20:	81 e0       	ldi	r24, 0x01	; 1
+     c22:	ae da       	rcall	.-2724   	; 0x180 <ADCDRV_GetValue>
+     c24:	90 93 63 01 	sts	0x0163, r25	; 0x800163 <u_isol+0x1>
+     c28:	80 93 62 01 	sts	0x0162, r24	; 0x800162 <u_isol>
+     c2c:	82 e0       	ldi	r24, 0x02	; 2
+     c2e:	a8 da       	rcall	.-2736   	; 0x180 <ADCDRV_GetValue>
+     c30:	90 93 61 01 	sts	0x0161, r25	; 0x800161 <u_ignc+0x1>
+     c34:	80 93 60 01 	sts	0x0160, r24	; 0x800160 <u_ignc>
+     c38:	af db       	rcall	.-2210   	; 0x398 <INDRV_ReadAll>
+     c3a:	81 e0       	ldi	r24, 0x01	; 1
+     c3c:	4e dc       	rcall	.-1892   	; 0x4da <INDRV_GetInput>
+     c3e:	80 93 67 01 	sts	0x0167, r24	; 0x800167 <master_act>
+     c42:	82 e0       	ldi	r24, 0x02	; 2
+     c44:	4a dc       	rcall	.-1900   	; 0x4da <INDRV_GetInput>
+     c46:	80 93 66 01 	sts	0x0166, r24	; 0x800166 <kill_act>
+     c4a:	81 e0       	ldi	r24, 0x01	; 1
+     c4c:	17 df       	rcall	.-466    	; 0xa7c <OUTDRV_GetRealOutput>
+     c4e:	90 91 5d 01 	lds	r25, 0x015D	; 0x80015d <isolator_act>
+     c52:	89 17       	cp	r24, r25
+     c54:	19 f0       	breq	.+6      	; 0xc5c <DataGathering+0x66>
+     c56:	91 e0       	ldi	r25, 0x01	; 1
+     c58:	90 93 5c 01 	sts	0x015C, r25	; 0x80015c <isolator_act_change>
+     c5c:	80 93 5d 01 	sts	0x015D, r24	; 0x80015d <isolator_act>
+     c60:	82 e0       	ldi	r24, 0x02	; 2
+     c62:	0c df       	rcall	.-488    	; 0xa7c <OUTDRV_GetRealOutput>
+     c64:	80 93 5b 01 	sts	0x015B, r24	; 0x80015b <ignition_act>
+     c68:	20 91 64 01 	lds	r18, 0x0164	; 0x800164 <u_alt>
+     c6c:	30 91 65 01 	lds	r19, 0x0165	; 0x800165 <u_alt+0x1>
+     c70:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     c74:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+     c78:	82 17       	cp	r24, r18
+     c7a:	93 07       	cpc	r25, r19
+     c7c:	90 f4       	brcc	.+36     	; 0xca2 <DataGathering+0xac>
+     c7e:	80 91 64 01 	lds	r24, 0x0164	; 0x800164 <u_alt>
+     c82:	90 91 65 01 	lds	r25, 0x0165	; 0x800165 <u_alt+0x1>
+     c86:	20 91 00 01 	lds	r18, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     c8a:	30 91 01 01 	lds	r19, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+     c8e:	82 1b       	sub	r24, r18
+     c90:	93 0b       	sbc	r25, r19
+     c92:	90 93 5f 01 	sts	0x015F, r25	; 0x80015f <u_relay_drop+0x1>
+     c96:	80 93 5e 01 	sts	0x015E, r24	; 0x80015e <u_relay_drop>
+     c9a:	81 e0       	ldi	r24, 0x01	; 1
+     c9c:	80 93 5a 01 	sts	0x015A, r24	; 0x80015a <alternator_act>
+     ca0:	10 c0       	rjmp	.+32     	; 0xcc2 <DataGathering+0xcc>
+     ca2:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     ca6:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+     caa:	20 91 64 01 	lds	r18, 0x0164	; 0x800164 <u_alt>
+     cae:	30 91 65 01 	lds	r19, 0x0165	; 0x800165 <u_alt+0x1>
+     cb2:	82 1b       	sub	r24, r18
+     cb4:	93 0b       	sbc	r25, r19
+     cb6:	90 93 5f 01 	sts	0x015F, r25	; 0x80015f <u_relay_drop+0x1>
+     cba:	80 93 5e 01 	sts	0x015E, r24	; 0x80015e <u_relay_drop>
+     cbe:	10 92 5a 01 	sts	0x015A, r1	; 0x80015a <alternator_act>
+     cc2:	21 96       	adiw	r28, 0x01	; 1
+     cc4:	c0 17       	cp	r28, r16
+     cc6:	d1 07       	cpc	r29, r17
+     cc8:	08 f4       	brcc	.+2      	; 0xccc <DataGathering+0xd6>
+     cca:	9d cf       	rjmp	.-198    	; 0xc06 <DataGathering+0x10>
+     ccc:	df 91       	pop	r29
+     cce:	cf 91       	pop	r28
+     cd0:	1f 91       	pop	r17
+     cd2:	0f 91       	pop	r16
+     cd4:	08 95       	ret
+
+00000cd6 <Startup_Procedure>:
+     cd6:	cf 93       	push	r28
+     cd8:	c0 91 57 01 	lds	r28, 0x0157	; 0x800157 <step.1758>
+     cdc:	c1 11       	cpse	r28, r1
+     cde:	0e c0       	rjmp	.+28     	; 0xcfc <Startup_Procedure+0x26>
+     ce0:	82 e0       	ldi	r24, 0x02	; 2
+     ce2:	cc db       	rcall	.-2152   	; 0x47c <INDRV_Wake>
+     ce4:	4f dc       	rcall	.-1890   	; 0x584 <LEDDRV_OnSolid>
+     ce6:	84 e6       	ldi	r24, 0x64	; 100
+     ce8:	90 e0       	ldi	r25, 0x00	; 0
+     cea:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     cee:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     cf2:	81 e0       	ldi	r24, 0x01	; 1
+     cf4:	80 93 57 01 	sts	0x0157, r24	; 0x800157 <step.1758>
+     cf8:	c1 e0       	ldi	r28, 0x01	; 1
+     cfa:	90 c0       	rjmp	.+288    	; 0xe1c <Startup_Procedure+0x146>
+     cfc:	c1 30       	cpi	r28, 0x01	; 1
+     cfe:	81 f4       	brne	.+32     	; 0xd20 <Startup_Procedure+0x4a>
+     d00:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <timeout.1759>
+     d04:	90 91 56 01 	lds	r25, 0x0156	; 0x800156 <timeout.1759+0x1>
+     d08:	00 97       	sbiw	r24, 0x00	; 0
+     d0a:	31 f0       	breq	.+12     	; 0xd18 <Startup_Procedure+0x42>
+     d0c:	01 97       	sbiw	r24, 0x01	; 1
+     d0e:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     d12:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     d16:	82 c0       	rjmp	.+260    	; 0xe1c <Startup_Procedure+0x146>
+     d18:	82 e0       	ldi	r24, 0x02	; 2
+     d1a:	80 93 57 01 	sts	0x0157, r24	; 0x800157 <step.1758>
+     d1e:	7e c0       	rjmp	.+252    	; 0xe1c <Startup_Procedure+0x146>
+     d20:	c2 30       	cpi	r28, 0x02	; 2
+     d22:	d9 f4       	brne	.+54     	; 0xd5a <Startup_Procedure+0x84>
+     d24:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+     d28:	88 23       	and	r24, r24
+     d2a:	21 f0       	breq	.+8      	; 0xd34 <Startup_Procedure+0x5e>
+     d2c:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+     d30:	88 23       	and	r24, r24
+     d32:	21 f0       	breq	.+8      	; 0xd3c <Startup_Procedure+0x66>
+     d34:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <step.1758>
+     d38:	c4 e0       	ldi	r28, 0x04	; 4
+     d3a:	70 c0       	rjmp	.+224    	; 0xe1c <Startup_Procedure+0x146>
+     d3c:	81 e0       	ldi	r24, 0x01	; 1
+     d3e:	86 de       	rcall	.-756    	; 0xa4c <OUTDRV_EnableOutput>
+     d40:	81 e0       	ldi	r24, 0x01	; 1
+     d42:	6c de       	rcall	.-808    	; 0xa1c <OUTDRV_SetOutput>
+     d44:	88 ec       	ldi	r24, 0xC8	; 200
+     d46:	90 e0       	ldi	r25, 0x00	; 0
+     d48:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     d4c:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     d50:	83 e0       	ldi	r24, 0x03	; 3
+     d52:	80 93 57 01 	sts	0x0157, r24	; 0x800157 <step.1758>
+     d56:	c1 e0       	ldi	r28, 0x01	; 1
+     d58:	61 c0       	rjmp	.+194    	; 0xe1c <Startup_Procedure+0x146>
+     d5a:	c3 30       	cpi	r28, 0x03	; 3
+     d5c:	81 f5       	brne	.+96     	; 0xdbe <Startup_Procedure+0xe8>
+     d5e:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+     d62:	88 23       	and	r24, r24
+     d64:	41 f0       	breq	.+16     	; 0xd76 <Startup_Procedure+0xa0>
+     d66:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+     d6a:	81 11       	cpse	r24, r1
+     d6c:	04 c0       	rjmp	.+8      	; 0xd76 <Startup_Procedure+0xa0>
+     d6e:	81 e0       	ldi	r24, 0x01	; 1
+     d70:	f6 de       	rcall	.-532    	; 0xb5e <OUTDRV_GetFault>
+     d72:	88 23       	and	r24, r24
+     d74:	41 f0       	breq	.+16     	; 0xd86 <Startup_Procedure+0xb0>
+     d76:	81 e0       	ldi	r24, 0x01	; 1
+     d78:	5e de       	rcall	.-836    	; 0xa36 <OUTDRV_ResetOutput>
+     d7a:	81 e0       	ldi	r24, 0x01	; 1
+     d7c:	74 de       	rcall	.-792    	; 0xa66 <OUTDRV_DisableOutput>
+     d7e:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <step.1758>
+     d82:	c4 e0       	ldi	r28, 0x04	; 4
+     d84:	4b c0       	rjmp	.+150    	; 0xe1c <Startup_Procedure+0x146>
+     d86:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <timeout.1759>
+     d8a:	90 91 56 01 	lds	r25, 0x0156	; 0x800156 <timeout.1759+0x1>
+     d8e:	00 97       	sbiw	r24, 0x00	; 0
+     d90:	39 f0       	breq	.+14     	; 0xda0 <Startup_Procedure+0xca>
+     d92:	01 97       	sbiw	r24, 0x01	; 1
+     d94:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     d98:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     d9c:	c1 e0       	ldi	r28, 0x01	; 1
+     d9e:	3e c0       	rjmp	.+124    	; 0xe1c <Startup_Procedure+0x146>
+     da0:	82 e0       	ldi	r24, 0x02	; 2
+     da2:	54 de       	rcall	.-856    	; 0xa4c <OUTDRV_EnableOutput>
+     da4:	82 e0       	ldi	r24, 0x02	; 2
+     da6:	3a de       	rcall	.-908    	; 0xa1c <OUTDRV_SetOutput>
+     da8:	88 ec       	ldi	r24, 0xC8	; 200
+     daa:	90 e0       	ldi	r25, 0x00	; 0
+     dac:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     db0:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     db4:	84 e0       	ldi	r24, 0x04	; 4
+     db6:	80 93 57 01 	sts	0x0157, r24	; 0x800157 <step.1758>
+     dba:	c1 e0       	ldi	r28, 0x01	; 1
+     dbc:	2f c0       	rjmp	.+94     	; 0xe1c <Startup_Procedure+0x146>
+     dbe:	c4 30       	cpi	r28, 0x04	; 4
+     dc0:	61 f5       	brne	.+88     	; 0xe1a <Startup_Procedure+0x144>
+     dc2:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+     dc6:	88 23       	and	r24, r24
+     dc8:	61 f0       	breq	.+24     	; 0xde2 <Startup_Procedure+0x10c>
+     dca:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+     dce:	81 11       	cpse	r24, r1
+     dd0:	08 c0       	rjmp	.+16     	; 0xde2 <Startup_Procedure+0x10c>
+     dd2:	81 e0       	ldi	r24, 0x01	; 1
+     dd4:	c4 de       	rcall	.-632    	; 0xb5e <OUTDRV_GetFault>
+     dd6:	81 11       	cpse	r24, r1
+     dd8:	04 c0       	rjmp	.+8      	; 0xde2 <Startup_Procedure+0x10c>
+     dda:	82 e0       	ldi	r24, 0x02	; 2
+     ddc:	c0 de       	rcall	.-640    	; 0xb5e <OUTDRV_GetFault>
+     dde:	88 23       	and	r24, r24
+     de0:	59 f0       	breq	.+22     	; 0xdf8 <Startup_Procedure+0x122>
+     de2:	81 e0       	ldi	r24, 0x01	; 1
+     de4:	28 de       	rcall	.-944    	; 0xa36 <OUTDRV_ResetOutput>
+     de6:	82 e0       	ldi	r24, 0x02	; 2
+     de8:	26 de       	rcall	.-948    	; 0xa36 <OUTDRV_ResetOutput>
+     dea:	81 e0       	ldi	r24, 0x01	; 1
+     dec:	3c de       	rcall	.-904    	; 0xa66 <OUTDRV_DisableOutput>
+     dee:	82 e0       	ldi	r24, 0x02	; 2
+     df0:	3a de       	rcall	.-908    	; 0xa66 <OUTDRV_DisableOutput>
+     df2:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <step.1758>
+     df6:	12 c0       	rjmp	.+36     	; 0xe1c <Startup_Procedure+0x146>
+     df8:	80 91 55 01 	lds	r24, 0x0155	; 0x800155 <timeout.1759>
+     dfc:	90 91 56 01 	lds	r25, 0x0156	; 0x800156 <timeout.1759+0x1>
+     e00:	00 97       	sbiw	r24, 0x00	; 0
+     e02:	39 f0       	breq	.+14     	; 0xe12 <Startup_Procedure+0x13c>
+     e04:	01 97       	sbiw	r24, 0x01	; 1
+     e06:	90 93 56 01 	sts	0x0156, r25	; 0x800156 <timeout.1759+0x1>
+     e0a:	80 93 55 01 	sts	0x0155, r24	; 0x800155 <timeout.1759>
+     e0e:	c1 e0       	ldi	r28, 0x01	; 1
+     e10:	05 c0       	rjmp	.+10     	; 0xe1c <Startup_Procedure+0x146>
+     e12:	10 92 57 01 	sts	0x0157, r1	; 0x800157 <step.1758>
+     e16:	c2 e0       	ldi	r28, 0x02	; 2
+     e18:	01 c0       	rjmp	.+2      	; 0xe1c <Startup_Procedure+0x146>
+     e1a:	c1 e0       	ldi	r28, 0x01	; 1
+     e1c:	8c 2f       	mov	r24, r28
+     e1e:	cf 91       	pop	r28
+     e20:	08 95       	ret
+
+00000e22 <Kill_Procedure>:
+     e22:	80 91 54 01 	lds	r24, 0x0154	; 0x800154 <step.1763>
+     e26:	81 11       	cpse	r24, r1
+     e28:	1b c0       	rjmp	.+54     	; 0xe60 <Kill_Procedure+0x3e>
+     e2a:	88 ec       	ldi	r24, 0xC8	; 200
+     e2c:	90 e0       	ldi	r25, 0x00	; 0
+     e2e:	b2 db       	rcall	.-2204   	; 0x594 <LEDDRV_Flashing>
+     e30:	82 e0       	ldi	r24, 0x02	; 2
+     e32:	01 de       	rcall	.-1022   	; 0xa36 <OUTDRV_ResetOutput>
+     e34:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+     e38:	88 23       	and	r24, r24
+     e3a:	39 f0       	breq	.+14     	; 0xe4a <Kill_Procedure+0x28>
+     e3c:	84 e6       	ldi	r24, 0x64	; 100
+     e3e:	90 e0       	ldi	r25, 0x00	; 0
+     e40:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <timeout.1764+0x1>
+     e44:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <timeout.1764>
+     e48:	06 c0       	rjmp	.+12     	; 0xe56 <Kill_Procedure+0x34>
+     e4a:	84 e6       	ldi	r24, 0x64	; 100
+     e4c:	90 e0       	ldi	r25, 0x00	; 0
+     e4e:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <timeout.1764+0x1>
+     e52:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <timeout.1764>
+     e56:	81 e0       	ldi	r24, 0x01	; 1
+     e58:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <step.1763>
+     e5c:	83 e0       	ldi	r24, 0x03	; 3
+     e5e:	08 95       	ret
+     e60:	81 30       	cpi	r24, 0x01	; 1
+     e62:	69 f5       	brne	.+90     	; 0xebe <Kill_Procedure+0x9c>
+     e64:	80 91 64 01 	lds	r24, 0x0164	; 0x800164 <u_alt>
+     e68:	90 91 65 01 	lds	r25, 0x0165	; 0x800165 <u_alt+0x1>
+     e6c:	80 31       	cpi	r24, 0x10	; 16
+     e6e:	97 42       	sbci	r25, 0x27	; 39
+     e70:	18 f4       	brcc	.+6      	; 0xe78 <Kill_Procedure+0x56>
+     e72:	82 e0       	ldi	r24, 0x02	; 2
+     e74:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <step.1763>
+     e78:	80 91 52 01 	lds	r24, 0x0152	; 0x800152 <timeout.1764>
+     e7c:	90 91 53 01 	lds	r25, 0x0153	; 0x800153 <timeout.1764+0x1>
+     e80:	85 36       	cpi	r24, 0x65	; 101
+     e82:	91 05       	cpc	r25, r1
+     e84:	50 f0       	brcs	.+20     	; 0xe9a <Kill_Procedure+0x78>
+     e86:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+     e8a:	88 23       	and	r24, r24
+     e8c:	31 f0       	breq	.+12     	; 0xe9a <Kill_Procedure+0x78>
+     e8e:	84 e6       	ldi	r24, 0x64	; 100
+     e90:	90 e0       	ldi	r25, 0x00	; 0
+     e92:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <timeout.1764+0x1>
+     e96:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <timeout.1764>
+     e9a:	80 91 52 01 	lds	r24, 0x0152	; 0x800152 <timeout.1764>
+     e9e:	90 91 53 01 	lds	r25, 0x0153	; 0x800153 <timeout.1764+0x1>
+     ea2:	00 97       	sbiw	r24, 0x00	; 0
+     ea4:	39 f0       	breq	.+14     	; 0xeb4 <Kill_Procedure+0x92>
+     ea6:	01 97       	sbiw	r24, 0x01	; 1
+     ea8:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <timeout.1764+0x1>
+     eac:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <timeout.1764>
+     eb0:	83 e0       	ldi	r24, 0x03	; 3
+     eb2:	08 95       	ret
+     eb4:	82 e0       	ldi	r24, 0x02	; 2
+     eb6:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <step.1763>
+     eba:	83 e0       	ldi	r24, 0x03	; 3
+     ebc:	08 95       	ret
+     ebe:	82 30       	cpi	r24, 0x02	; 2
+     ec0:	69 f4       	brne	.+26     	; 0xedc <Kill_Procedure+0xba>
+     ec2:	81 e0       	ldi	r24, 0x01	; 1
+     ec4:	b8 dd       	rcall	.-1168   	; 0xa36 <OUTDRV_ResetOutput>
+     ec6:	83 e0       	ldi	r24, 0x03	; 3
+     ec8:	80 93 54 01 	sts	0x0154, r24	; 0x800154 <step.1763>
+     ecc:	84 e6       	ldi	r24, 0x64	; 100
+     ece:	90 e0       	ldi	r25, 0x00	; 0
+     ed0:	90 93 53 01 	sts	0x0153, r25	; 0x800153 <timeout.1764+0x1>
+     ed4:	80 93 52 01 	sts	0x0152, r24	; 0x800152 <timeout.1764>
+     ed8:	83 e0       	ldi	r24, 0x03	; 3
+     eda:	08 95       	ret
+     edc:	83 30       	cpi	r24, 0x03	; 3
+     ede:	b1 f4       	brne	.+44     	; 0xf0c <Kill_Procedure+0xea>
+     ee0:	20 91 52 01 	lds	r18, 0x0152	; 0x800152 <timeout.1764>
+     ee4:	30 91 53 01 	lds	r19, 0x0153	; 0x800153 <timeout.1764+0x1>
+     ee8:	21 15       	cp	r18, r1
+     eea:	31 05       	cpc	r19, r1
+     eec:	39 f0       	breq	.+14     	; 0xefc <Kill_Procedure+0xda>
+     eee:	21 50       	subi	r18, 0x01	; 1
+     ef0:	31 09       	sbc	r19, r1
+     ef2:	30 93 53 01 	sts	0x0153, r19	; 0x800153 <timeout.1764+0x1>
+     ef6:	20 93 52 01 	sts	0x0152, r18	; 0x800152 <timeout.1764>
+     efa:	08 95       	ret
+     efc:	81 e0       	ldi	r24, 0x01	; 1
+     efe:	b3 dd       	rcall	.-1178   	; 0xa66 <OUTDRV_DisableOutput>
+     f00:	82 e0       	ldi	r24, 0x02	; 2
+     f02:	b1 dd       	rcall	.-1182   	; 0xa66 <OUTDRV_DisableOutput>
+     f04:	10 92 54 01 	sts	0x0154, r1	; 0x800154 <step.1763>
+     f08:	84 e0       	ldi	r24, 0x04	; 4
+     f0a:	08 95       	ret
+     f0c:	83 e0       	ldi	r24, 0x03	; 3
+     f0e:	08 95       	ret
+
+00000f10 <Lockout_Procedure>:
+     f10:	cf 93       	push	r28
+     f12:	80 91 51 01 	lds	r24, 0x0151	; 0x800151 <step.1768>
+     f16:	81 11       	cpse	r24, r1
+     f18:	1e c0       	rjmp	.+60     	; 0xf56 <Lockout_Procedure+0x46>
+     f1a:	81 e0       	ldi	r24, 0x01	; 1
+     f1c:	8c dd       	rcall	.-1256   	; 0xa36 <OUTDRV_ResetOutput>
+     f1e:	82 e0       	ldi	r24, 0x02	; 2
+     f20:	8a dd       	rcall	.-1260   	; 0xa36 <OUTDRV_ResetOutput>
+     f22:	81 e0       	ldi	r24, 0x01	; 1
+     f24:	a0 dd       	rcall	.-1216   	; 0xa66 <OUTDRV_DisableOutput>
+     f26:	82 e0       	ldi	r24, 0x02	; 2
+     f28:	9e dd       	rcall	.-1220   	; 0xa66 <OUTDRV_DisableOutput>
+     f2a:	82 e0       	ldi	r24, 0x02	; 2
+     f2c:	78 da       	rcall	.-2832   	; 0x41e <INDRV_Sleep>
+     f2e:	88 ee       	ldi	r24, 0xE8	; 232
+     f30:	93 e0       	ldi	r25, 0x03	; 3
+     f32:	30 db       	rcall	.-2464   	; 0x594 <LEDDRV_Flashing>
+     f34:	80 e3       	ldi	r24, 0x30	; 48
+     f36:	95 e7       	ldi	r25, 0x75	; 117
+     f38:	90 93 50 01 	sts	0x0150, r25	; 0x800150 <led_timeout.1770+0x1>
+     f3c:	80 93 4f 01 	sts	0x014F, r24	; 0x80014f <led_timeout.1770>
+     f40:	88 e8       	ldi	r24, 0x88	; 136
+     f42:	93 e1       	ldi	r25, 0x13	; 19
+     f44:	90 93 4e 01 	sts	0x014E, r25	; 0x80014e <timeout.1769+0x1>
+     f48:	80 93 4d 01 	sts	0x014D, r24	; 0x80014d <timeout.1769>
+     f4c:	81 e0       	ldi	r24, 0x01	; 1
+     f4e:	80 93 51 01 	sts	0x0151, r24	; 0x800151 <step.1768>
+     f52:	c4 e0       	ldi	r28, 0x04	; 4
+     f54:	2d c0       	rjmp	.+90     	; 0xfb0 <Lockout_Procedure+0xa0>
+     f56:	80 91 4f 01 	lds	r24, 0x014F	; 0x80014f <led_timeout.1770>
+     f5a:	90 91 50 01 	lds	r25, 0x0150	; 0x800150 <led_timeout.1770+0x1>
+     f5e:	00 97       	sbiw	r24, 0x00	; 0
+     f60:	31 f0       	breq	.+12     	; 0xf6e <Lockout_Procedure+0x5e>
+     f62:	01 97       	sbiw	r24, 0x01	; 1
+     f64:	90 93 50 01 	sts	0x0150, r25	; 0x800150 <led_timeout.1770+0x1>
+     f68:	80 93 4f 01 	sts	0x014F, r24	; 0x80014f <led_timeout.1770>
+     f6c:	01 c0       	rjmp	.+2      	; 0xf70 <Lockout_Procedure+0x60>
+     f6e:	03 db       	rcall	.-2554   	; 0x576 <LEDDRV_Off>
+     f70:	c0 91 67 01 	lds	r28, 0x0167	; 0x800167 <master_act>
+     f74:	cc 23       	and	r28, r28
+     f76:	41 f0       	breq	.+16     	; 0xf88 <Lockout_Procedure+0x78>
+     f78:	88 e8       	ldi	r24, 0x88	; 136
+     f7a:	93 e1       	ldi	r25, 0x13	; 19
+     f7c:	90 93 4e 01 	sts	0x014E, r25	; 0x80014e <timeout.1769+0x1>
+     f80:	80 93 4d 01 	sts	0x014D, r24	; 0x80014d <timeout.1769>
+     f84:	c4 e0       	ldi	r28, 0x04	; 4
+     f86:	14 c0       	rjmp	.+40     	; 0xfb0 <Lockout_Procedure+0xa0>
+     f88:	80 91 4d 01 	lds	r24, 0x014D	; 0x80014d <timeout.1769>
+     f8c:	90 91 4e 01 	lds	r25, 0x014E	; 0x80014e <timeout.1769+0x1>
+     f90:	00 97       	sbiw	r24, 0x00	; 0
+     f92:	39 f0       	breq	.+14     	; 0xfa2 <Lockout_Procedure+0x92>
+     f94:	01 97       	sbiw	r24, 0x01	; 1
+     f96:	90 93 4e 01 	sts	0x014E, r25	; 0x80014e <timeout.1769+0x1>
+     f9a:	80 93 4d 01 	sts	0x014D, r24	; 0x80014d <timeout.1769>
+     f9e:	c4 e0       	ldi	r28, 0x04	; 4
+     fa0:	07 c0       	rjmp	.+14     	; 0xfb0 <Lockout_Procedure+0xa0>
+     fa2:	10 92 51 01 	sts	0x0151, r1	; 0x800151 <step.1768>
+     fa6:	10 92 50 01 	sts	0x0150, r1	; 0x800150 <led_timeout.1770+0x1>
+     faa:	10 92 4f 01 	sts	0x014F, r1	; 0x80014f <led_timeout.1770>
+     fae:	e3 da       	rcall	.-2618   	; 0x576 <LEDDRV_Off>
+     fb0:	8c 2f       	mov	r24, r28
+     fb2:	cf 91       	pop	r28
+     fb4:	08 95       	ret
+
+00000fb6 <Init_ReducePower>:
+ * @brief Disables not used system peripherals
+ */
+void Init_ReducePower(void)
+{
+	//Disable unnecessary peripherals
+	PRR = 0xAC;  //TWI,SPI,TIM0 and TIM1
+     fb6:	8c ea       	ldi	r24, 0xAC	; 172
+     fb8:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <__TEXT_REGION_LENGTH__+0x7fe064>
+     fbc:	08 95       	ret
+
+00000fbe <IsolatorOCP>:
+	static uint8_t ocp_fault = 0;
+	static uint8_t ocp_counter = 0;
+	static uint16_t cooldown_timer = 0;
+
+	//Adjust relay drop
+	if(isolator_act) drop = u_relay_drop;
+     fbe:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <isolator_act>
+     fc2:	88 23       	and	r24, r24
+     fc4:	29 f0       	breq	.+10     	; 0xfd0 <IsolatorOCP+0x12>
+     fc6:	80 91 5e 01 	lds	r24, 0x015E	; 0x80015e <u_relay_drop>
+     fca:	90 91 5f 01 	lds	r25, 0x015F	; 0x80015f <u_relay_drop+0x1>
+     fce:	02 c0       	rjmp	.+4      	; 0xfd4 <IsolatorOCP+0x16>
+	else drop=0;
+     fd0:	80 e0       	ldi	r24, 0x00	; 0
+     fd2:	90 e0       	ldi	r25, 0x00	; 0
+	
+	//Check Over-Current warning
+	if((drop>ISOLATOR_DROP_LIMIT)&&(ISOLATOR_DROP_LIMIT!=0)) ocp_warning = 1;
+     fd4:	85 3f       	cpi	r24, 0xF5	; 245
+     fd6:	21 e0       	ldi	r18, 0x01	; 1
+     fd8:	92 07       	cpc	r25, r18
+     fda:	10 f0       	brcs	.+4      	; 0xfe0 <IsolatorOCP+0x22>
+     fdc:	21 e0       	ldi	r18, 0x01	; 1
+     fde:	01 c0       	rjmp	.+2      	; 0xfe2 <IsolatorOCP+0x24>
+	else ocp_warning = 0;
+     fe0:	20 e0       	ldi	r18, 0x00	; 0
+	
+	//Do delay calculations	
+	if(relay_ocp_deadtime) relay_ocp_deadtime--;
+     fe2:	30 91 58 01 	lds	r19, 0x0158	; 0x800158 <relay_ocp_deadtime>
+     fe6:	33 23       	and	r19, r19
+     fe8:	29 f0       	breq	.+10     	; 0xff4 <IsolatorOCP+0x36>
+     fea:	30 91 58 01 	lds	r19, 0x0158	; 0x800158 <relay_ocp_deadtime>
+     fee:	31 50       	subi	r19, 0x01	; 1
+     ff0:	30 93 58 01 	sts	0x0158, r19	; 0x800158 <relay_ocp_deadtime>
+	//OCP Delay
+	if((ocp_warning)&&(!relay_ocp_deadtime))
+     ff4:	22 23       	and	r18, r18
+     ff6:	a9 f0       	breq	.+42     	; 0x1022 <IsolatorOCP+0x64>
+     ff8:	20 91 58 01 	lds	r18, 0x0158	; 0x800158 <relay_ocp_deadtime>
+     ffc:	21 11       	cpse	r18, r1
+     ffe:	11 c0       	rjmp	.+34     	; 0x1022 <IsolatorOCP+0x64>
+	{
+		//Calculate increment
+		uint16_t x = drop/ISOLATOR_DROP_LIMIT;
+    1000:	64 ef       	ldi	r22, 0xF4	; 244
+    1002:	71 e0       	ldi	r23, 0x01	; 1
+    1004:	37 d1       	rcall	.+622    	; 0x1274 <__udivmodhi4>
+		if(x>255) x = 255;
+		uint8_t inc = (uint8_t)x;
+		
+		//Saturated add
+		uint8_t dtop = 255-ocp_counter;
+    1006:	80 91 4c 01 	lds	r24, 0x014C	; 0x80014c <ocp_counter.1783>
+    100a:	98 2f       	mov	r25, r24
+    100c:	90 95       	com	r25
+		if(inc>dtop) ocp_counter = 255;
+    100e:	96 17       	cp	r25, r22
+    1010:	20 f4       	brcc	.+8      	; 0x101a <IsolatorOCP+0x5c>
+    1012:	8f ef       	ldi	r24, 0xFF	; 255
+    1014:	80 93 4c 01 	sts	0x014C, r24	; 0x80014c <ocp_counter.1783>
+    1018:	0b c0       	rjmp	.+22     	; 0x1030 <IsolatorOCP+0x72>
+		else ocp_counter += inc;
+    101a:	68 0f       	add	r22, r24
+    101c:	60 93 4c 01 	sts	0x014C, r22	; 0x80014c <ocp_counter.1783>
+    1020:	07 c0       	rjmp	.+14     	; 0x1030 <IsolatorOCP+0x72>
+	}
+	else
+	{
+		//Saturated subtraction
+		if(ocp_counter) ocp_counter--;
+    1022:	80 91 4c 01 	lds	r24, 0x014C	; 0x80014c <ocp_counter.1783>
+    1026:	88 23       	and	r24, r24
+    1028:	19 f0       	breq	.+6      	; 0x1030 <IsolatorOCP+0x72>
+    102a:	81 50       	subi	r24, 0x01	; 1
+    102c:	80 93 4c 01 	sts	0x014C, r24	; 0x80014c <ocp_counter.1783>
+	}
+	
+	//Check fault
+	if(ocp_counter>ISOLATOR_DROP_DELAY)
+    1030:	80 91 4c 01 	lds	r24, 0x014C	; 0x80014c <ocp_counter.1783>
+    1034:	85 31       	cpi	r24, 0x15	; 21
+    1036:	80 f0       	brcs	.+32     	; 0x1058 <IsolatorOCP+0x9a>
+	{
+		ocp_fault = 1;
+    1038:	81 e0       	ldi	r24, 0x01	; 1
+    103a:	80 93 4b 01 	sts	0x014B, r24	; 0x80014b <ocp_fault.1782>
+		if(!cooldown_timer)
+    103e:	80 91 49 01 	lds	r24, 0x0149	; 0x800149 <cooldown_timer.1784>
+    1042:	90 91 4a 01 	lds	r25, 0x014A	; 0x80014a <cooldown_timer.1784+0x1>
+    1046:	89 2b       	or	r24, r25
+    1048:	a9 f4       	brne	.+42     	; 0x1074 <IsolatorOCP+0xb6>
+		{
+			cooldown_timer = ISOLATOR_OCP_COOLDOWN;
+    104a:	88 ee       	ldi	r24, 0xE8	; 232
+    104c:	93 e0       	ldi	r25, 0x03	; 3
+    104e:	90 93 4a 01 	sts	0x014A, r25	; 0x80014a <cooldown_timer.1784+0x1>
+    1052:	80 93 49 01 	sts	0x0149, r24	; 0x800149 <cooldown_timer.1784>
+    1056:	0e c0       	rjmp	.+28     	; 0x1074 <IsolatorOCP+0xb6>
+		};
+	}
+	else
+	{
+		//Wait for fault cooldown time
+		if(cooldown_timer) cooldown_timer--;
+    1058:	80 91 49 01 	lds	r24, 0x0149	; 0x800149 <cooldown_timer.1784>
+    105c:	90 91 4a 01 	lds	r25, 0x014A	; 0x80014a <cooldown_timer.1784+0x1>
+    1060:	00 97       	sbiw	r24, 0x00	; 0
+    1062:	31 f0       	breq	.+12     	; 0x1070 <IsolatorOCP+0xb2>
+    1064:	01 97       	sbiw	r24, 0x01	; 1
+    1066:	90 93 4a 01 	sts	0x014A, r25	; 0x80014a <cooldown_timer.1784+0x1>
+    106a:	80 93 49 01 	sts	0x0149, r24	; 0x800149 <cooldown_timer.1784>
+    106e:	02 c0       	rjmp	.+4      	; 0x1074 <IsolatorOCP+0xb6>
+		else
+		{
+			//Fault ended
+			ocp_fault = 0;
+    1070:	10 92 4b 01 	sts	0x014B, r1	; 0x80014b <ocp_fault.1782>
+		}
+	}
+	
+	return ocp_fault;
+    1074:	80 91 4b 01 	lds	r24, 0x014B	; 0x80014b <ocp_fault.1782>
+    1078:	08 95       	ret
+
+0000107a <main>:
+uint8_t Lockout_Procedure(void);
+uint8_t IsolatorOCP(void);
+
+/**** Application ****/
+int main(void)
+{
+    107a:	cf 93       	push	r28
+    107c:	df 93       	push	r29
+    107e:	cd b7       	in	r28, 0x3d	; 61
+    1080:	de b7       	in	r29, 0x3e	; 62
+    1082:	2c 97       	sbiw	r28, 0x0c	; 12
+    1084:	0f b6       	in	r0, 0x3f	; 63
+    1086:	f8 94       	cli
+    1088:	de bf       	out	0x3e, r29	; 62
+    108a:	0f be       	out	0x3f, r0	; 63
+    108c:	cd bf       	out	0x3d, r28	; 61
+	//Initialization
+	#ifdef WDT_ENABLED
+	wdt_reset();
+	Init_watchdog();
+	#endif
+	Init_ReducePower();
+    108e:	93 df       	rcall	.-218    	; 0xfb6 <Init_ReducePower>
+	
+	BSDRV_Init();
+    1090:	c2 d8       	rcall	.-3708   	; 0x216 <BSDRV_Init>
+	LEDDRV_Init();
+    1092:	65 da       	rcall	.-2870   	; 0x55e <LEDDRV_Init>
+	ADCDRV_Init(1); //start ADC in waked state
+    1094:	81 e0       	ldi	r24, 0x01	; 1
+    1096:	e4 d7       	rcall	.+4040   	; 0x2060 <__TEXT_REGION_LENGTH__+0x60>
+	LEDDRV_OnSolid();
+    1098:	75 da       	rcall	.-2838   	; 0x584 <LEDDRV_OnSolid>
+	LEDDRV_Process();
+    109a:	8b da       	rcall	.-2794   	; 0x5b2 <LEDDRV_Process>
+
+	//Wait for system inputs to stabilize
+	DelaySystem(10);
+    109c:	8a e0       	ldi	r24, 0x0A	; 10
+    109e:	90 e0       	ldi	r25, 0x00	; 0
+    10a0:	98 dd       	rcall	.-1232   	; 0xbd2 <DelaySystem>
+	
+	//Read bootstraps
+	BSDRV_Latch(1);
+    10a2:	81 e0       	ldi	r24, 0x01	; 1
+    10a4:	c1 d8       	rcall	.-3710   	; 0x228 <BSDRV_Latch>
+	
+	if(BSDRV_GetBootstrap(3)) relay_ocp_en = 0;
+    10a6:	83 e0       	ldi	r24, 0x03	; 3
+    10a8:	d0 d8       	rcall	.-3680   	; 0x24a <BSDRV_GetBootstrap>
+    10aa:	88 23       	and	r24, r24
+    10ac:	19 f0       	breq	.+6      	; 0x10b4 <main+0x3a>
+    10ae:	10 92 59 01 	sts	0x0159, r1	; 0x800159 <relay_ocp_en>
+    10b2:	03 c0       	rjmp	.+6      	; 0x10ba <main+0x40>
+	else relay_ocp_en = 1;
+    10b4:	81 e0       	ldi	r24, 0x01	; 1
+    10b6:	80 93 59 01 	sts	0x0159, r24	; 0x800159 <relay_ocp_en>
+	
+	//***Inputs setup
+	inCfgDef mstrSwCfg;
+	inCfgDef killSwCfg;
+	
+	mstrSwCfg.act_level = IN_ACT_LOW;
+    10ba:	19 82       	std	Y+1, r1	; 0x01
+	mstrSwCfg.pull = IN_PULL_UP;
+    10bc:	82 e0       	ldi	r24, 0x02	; 2
+    10be:	8b 83       	std	Y+3, r24	; 0x03
+	mstrSwCfg.dbnc_limit = MASTER_DEBOUNCE;
+    10c0:	8a e0       	ldi	r24, 0x0A	; 10
+    10c2:	8a 83       	std	Y+2, r24	; 0x02
+	 
+	//if(BSDRV_GetBootstrap(3)) mstrSwCfg.dbnc_limit = 100; //High filtering, long debounce time
+	//else mstrSwCfg.dbnc_limit = 10; //Normal filtering, short debounce time
+	
+	if(BSDRV_GetBootstrap(2)) killSwCfg.act_level = IN_ACT_HIGH; //Normally closed kill button
+    10c4:	82 e0       	ldi	r24, 0x02	; 2
+    10c6:	c1 d8       	rcall	.-3710   	; 0x24a <BSDRV_GetBootstrap>
+    10c8:	88 23       	and	r24, r24
+    10ca:	19 f0       	breq	.+6      	; 0x10d2 <main+0x58>
+    10cc:	81 e0       	ldi	r24, 0x01	; 1
+    10ce:	8c 83       	std	Y+4, r24	; 0x04
+    10d0:	01 c0       	rjmp	.+2      	; 0x10d4 <main+0x5a>
+	else killSwCfg.act_level = IN_ACT_LOW; //Normally open kill button
+    10d2:	1c 82       	std	Y+4, r1	; 0x04
+	killSwCfg.pull = IN_PULL_UP;
+    10d4:	82 e0       	ldi	r24, 0x02	; 2
+    10d6:	8e 83       	std	Y+6, r24	; 0x06
+	killSwCfg.dbnc_limit = KILL_DEBOUNCE;
+    10d8:	8a e0       	ldi	r24, 0x0A	; 10
+    10da:	8d 83       	std	Y+5, r24	; 0x05
+	
+	//if(BSDRV_GetBootstrap(3)) killSwCfg.dbnc_limit = 100; //High filtering, long debounce time
+	//else killSwCfg.dbnc_limit = 10; //Normal filtering, short debounce time
+	
+	INDRV_Init(&mstrSwCfg,&killSwCfg);
+    10dc:	be 01       	movw	r22, r28
+    10de:	6c 5f       	subi	r22, 0xFC	; 252
+    10e0:	7f 4f       	sbci	r23, 0xFF	; 255
+    10e2:	ce 01       	movw	r24, r28
+    10e4:	01 96       	adiw	r24, 0x01	; 1
+    10e6:	12 d9       	rcall	.-3548   	; 0x30c <INDRV_Init>
+	
+	INDRV_Wake(IN_MASTER);
+    10e8:	81 e0       	ldi	r24, 0x01	; 1
+    10ea:	c8 d9       	rcall	.-3184   	; 0x47c <INDRV_Wake>
+	INDRV_Wake(IN_KILL);
+    10ec:	82 e0       	ldi	r24, 0x02	; 2
+    10ee:	c6 d9       	rcall	.-3188   	; 0x47c <INDRV_Wake>
+
+	//***Outputs setup
+	outConfigDef isolCfg;
+	outConfigDef igncCfg;
+	
+	if(BSDRV_GetBootstrap(0)) isolCfg.type = OUT_TYPE_OD; //Active low
+    10f0:	80 e0       	ldi	r24, 0x00	; 0
+    10f2:	ab d8       	rcall	.-3754   	; 0x24a <BSDRV_GetBootstrap>
+    10f4:	88 23       	and	r24, r24
+    10f6:	19 f0       	breq	.+6      	; 0x10fe <main+0x84>
+    10f8:	81 e0       	ldi	r24, 0x01	; 1
+    10fa:	8f 83       	std	Y+7, r24	; 0x07
+    10fc:	02 c0       	rjmp	.+4      	; 0x1102 <main+0x88>
+	else isolCfg.type = OUT_TYPE_OS; //Active high
+    10fe:	82 e0       	ldi	r24, 0x02	; 2
+    1100:	8f 83       	std	Y+7, r24	; 0x07
+	//if(BSDRV_GetBootstrap(0) igncCfg.inv = 1; //Active low
+	//else igncCfg.inv = 0; //Active high
+	//isolCfg.type = OUT_TYPE_PP;
+	isolCfg.inv = 0;
+    1102:	18 86       	std	Y+8, r1	; 0x08
+	isolCfg.ext_fault_en = 1;
+    1104:	81 e0       	ldi	r24, 0x01	; 1
+    1106:	89 87       	std	Y+9, r24	; 0x09
+	
+	if(BSDRV_GetBootstrap(1)) igncCfg.type = OUT_TYPE_OD; //Active low
+    1108:	a0 d8       	rcall	.-3776   	; 0x24a <BSDRV_GetBootstrap>
+    110a:	88 23       	and	r24, r24
+    110c:	19 f0       	breq	.+6      	; 0x1114 <main+0x9a>
+    110e:	81 e0       	ldi	r24, 0x01	; 1
+    1110:	8a 87       	std	Y+10, r24	; 0x0a
+    1112:	02 c0       	rjmp	.+4      	; 0x1118 <main+0x9e>
+	else igncCfg.type = OUT_TYPE_OS; //Active high
+    1114:	82 e0       	ldi	r24, 0x02	; 2
+    1116:	8a 87       	std	Y+10, r24	; 0x0a
+	//if(BSDRV_GetBootstrap(1) igncCfg.inv = 1; //Active low
+	//else igncCfg.inv = 0; //Active high
+	//igncCfg.type = OUT_TYPE_PP;
+	igncCfg.inv = 0;
+    1118:	1b 86       	std	Y+11, r1	; 0x0b
+	igncCfg.ext_fault_en = 0;
+    111a:	1c 86       	std	Y+12, r1	; 0x0c
+	
+	OUTDRV_Init(&isolCfg,&igncCfg);
+    111c:	be 01       	movw	r22, r28
+    111e:	66 5f       	subi	r22, 0xF6	; 246
+    1120:	7f 4f       	sbci	r23, 0xFF	; 255
+    1122:	ce 01       	movw	r24, r28
+    1124:	07 96       	adiw	r24, 0x07	; 7
+    1126:	30 dc       	rcall	.-1952   	; 0x988 <OUTDRV_Init>
+	
+	//Set initial target values
+	OUTDRV_DisableOutput(OUT_ISOL);
+    1128:	81 e0       	ldi	r24, 0x01	; 1
+    112a:	9d dc       	rcall	.-1734   	; 0xa66 <OUTDRV_DisableOutput>
+	OUTDRV_DisableOutput(OUT_IGNC);
+    112c:	82 e0       	ldi	r24, 0x02	; 2
+    112e:	9b dc       	rcall	.-1738   	; 0xa66 <OUTDRV_DisableOutput>
+	OUTDRV_ResetOutput(OUT_ISOL);
+    1130:	81 e0       	ldi	r24, 0x01	; 1
+    1132:	81 dc       	rcall	.-1790   	; 0xa36 <OUTDRV_ResetOutput>
+	OUTDRV_ResetOutput(OUT_IGNC);
+    1134:	82 e0       	ldi	r24, 0x02	; 2
+    1136:	7f dc       	rcall	.-1794   	; 0xa36 <OUTDRV_ResetOutput>
+	
+	//Apply output states
+	OUTDRV_ProcessLogic();
+    1138:	ae dc       	rcall	.-1700   	; 0xa96 <OUTDRV_ProcessLogic>
+	
+	DataGathering(100); //Should be more that debounce time
+    113a:	84 e6       	ldi	r24, 0x64	; 100
+    113c:	90 e0       	ldi	r25, 0x00	; 0
+    113e:	5b dd       	rcall	.-1354   	; 0xbf6 <DataGathering>
+	
+	if((master_act)||(kill_act)) sys_state = LOCKOUT;
+    1140:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+    1144:	81 11       	cpse	r24, r1
+    1146:	04 c0       	rjmp	.+8      	; 0x1150 <main+0xd6>
+    1148:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+    114c:	88 23       	and	r24, r24
+    114e:	21 f0       	breq	.+8      	; 0x1158 <main+0xde>
+    1150:	84 e0       	ldi	r24, 0x04	; 4
+    1152:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+    1156:	02 c0       	rjmp	.+4      	; 0x115c <main+0xe2>
+	else sys_state = SLEEP;
+    1158:	10 92 68 01 	sts	0x0168, r1	; 0x800168 <sys_state>
+	
+	//Set everything to sleep
+	INDRV_Sleep(IN_KILL);
+    115c:	82 e0       	ldi	r24, 0x02	; 2
+    115e:	5f d9       	rcall	.-3394   	; 0x41e <INDRV_Sleep>
+	LEDDRV_Off();
+    1160:	0a da       	rcall	.-3052   	; 0x576 <LEDDRV_Off>
+	//main loop
+	while(1)
+	{
+		/******* Input data gathering ***********************************/
+		//One system tick is 13.5*4*(1/adc_clock) = 0.864ms
+		DataGathering(1);
+    1162:	81 e0       	ldi	r24, 0x01	; 1
+    1164:	90 e0       	ldi	r25, 0x00	; 0
+    1166:	47 dd       	rcall	.-1394   	; 0xbf6 <DataGathering>
+		
+		/******* Output protection processing ***************************/
+		OUTDRV_ProcessProtection(u_bat,u_isol,u_alt,u_ignc);
+    1168:	20 91 60 01 	lds	r18, 0x0160	; 0x800160 <u_ignc>
+    116c:	30 91 61 01 	lds	r19, 0x0161	; 0x800161 <u_ignc+0x1>
+    1170:	40 91 64 01 	lds	r20, 0x0164	; 0x800164 <u_alt>
+    1174:	50 91 65 01 	lds	r21, 0x0165	; 0x800165 <u_alt+0x1>
+    1178:	60 91 62 01 	lds	r22, 0x0162	; 0x800162 <u_isol>
+    117c:	70 91 63 01 	lds	r23, 0x0163	; 0x800163 <u_isol+0x1>
+    1180:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+    1184:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+    1188:	db dc       	rcall	.-1610   	; 0xb40 <OUTDRV_ProcessProtection>
+		
+		if(isolator_act_change)
+    118a:	80 91 5c 01 	lds	r24, 0x015C	; 0x80015c <isolator_act_change>
+    118e:	88 23       	and	r24, r24
+    1190:	29 f0       	breq	.+10     	; 0x119c <main+0x122>
+		{ 
+			//Insert OCP dead time, after output state change
+			relay_ocp_deadtime = ISOLATOR_OCP_DEADTIME;
+    1192:	85 e0       	ldi	r24, 0x05	; 5
+    1194:	80 93 58 01 	sts	0x0158, r24	; 0x800158 <relay_ocp_deadtime>
+			isolator_act_change = 0;
+    1198:	10 92 5c 01 	sts	0x015C, r1	; 0x80015c <isolator_act_change>
+		};
+		
+		if(OUTDRV_GetFault(OUT_ISOL)&&(sys_state==ACTIVE))
+    119c:	81 e0       	ldi	r24, 0x01	; 1
+    119e:	df dc       	rcall	.-1602   	; 0xb5e <OUTDRV_GetFault>
+    11a0:	88 23       	and	r24, r24
+    11a2:	69 f0       	breq	.+26     	; 0x11be <main+0x144>
+    11a4:	80 91 68 01 	lds	r24, 0x0168	; 0x800168 <sys_state>
+    11a8:	82 30       	cpi	r24, 0x02	; 2
+    11aa:	49 f4       	brne	.+18     	; 0x11be <main+0x144>
+		{
+			//If isolator control OCP, then turn off IGNC and go to killed state
+			OUTDRV_DelayFaultExecution(OUT_ISOL,2);
+    11ac:	62 e0       	ldi	r22, 0x02	; 2
+    11ae:	81 e0       	ldi	r24, 0x01	; 1
+    11b0:	02 dd       	rcall	.-1532   	; 0xbb6 <OUTDRV_DelayFaultExecution>
+			sys_state = KILLING;
+    11b2:	83 e0       	ldi	r24, 0x03	; 3
+    11b4:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+			kill_act = 1;
+    11b8:	81 e0       	ldi	r24, 0x01	; 1
+    11ba:	80 93 66 01 	sts	0x0166, r24	; 0x800166 <kill_act>
+		};
+		
+		if(IsolatorOCP()&&(relay_ocp_en)&&(sys_state==ACTIVE))
+    11be:	ff de       	rcall	.-514    	; 0xfbe <IsolatorOCP>
+    11c0:	88 23       	and	r24, r24
+    11c2:	71 f0       	breq	.+28     	; 0x11e0 <main+0x166>
+    11c4:	80 91 59 01 	lds	r24, 0x0159	; 0x800159 <relay_ocp_en>
+    11c8:	88 23       	and	r24, r24
+    11ca:	51 f0       	breq	.+20     	; 0x11e0 <main+0x166>
+    11cc:	80 91 68 01 	lds	r24, 0x0168	; 0x800168 <sys_state>
+    11d0:	82 30       	cpi	r24, 0x02	; 2
+    11d2:	31 f4       	brne	.+12     	; 0x11e0 <main+0x166>
+		{
+			//Do kill, force kill-switch active, for fast kill
+			sys_state = KILLING;
+    11d4:	83 e0       	ldi	r24, 0x03	; 3
+    11d6:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+			kill_act = 1;
+    11da:	81 e0       	ldi	r24, 0x01	; 1
+    11dc:	80 93 66 01 	sts	0x0166, r24	; 0x800166 <kill_act>
+		};
+		
+		if((OUTDRV_GetFaultCount(OUT_IGNC)>IGNC_FAULT_CNT_LIMIT)&&(sys_state==ACTIVE))
+    11e0:	82 e0       	ldi	r24, 0x02	; 2
+    11e2:	dc dc       	rcall	.-1608   	; 0xb9c <OUTDRV_GetFaultCount>
+    11e4:	86 30       	cpi	r24, 0x06	; 6
+    11e6:	50 f0       	brcs	.+20     	; 0x11fc <main+0x182>
+    11e8:	80 91 68 01 	lds	r24, 0x0168	; 0x800168 <sys_state>
+    11ec:	82 30       	cpi	r24, 0x02	; 2
+    11ee:	31 f4       	brne	.+12     	; 0x11fc <main+0x182>
+		{
+			//Do kill, force kill-switch active, for fast kill
+			sys_state = KILLING;
+    11f0:	83 e0       	ldi	r24, 0x03	; 3
+    11f2:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+			kill_act = 1;
+    11f6:	81 e0       	ldi	r24, 0x01	; 1
+    11f8:	80 93 66 01 	sts	0x0166, r24	; 0x800166 <kill_act>
+		};
+		
+		/******* State machine ******************************************/
+		switch(sys_state)
+    11fc:	80 91 68 01 	lds	r24, 0x0168	; 0x800168 <sys_state>
+    1200:	82 30       	cpi	r24, 0x02	; 2
+    1202:	d1 f0       	breq	.+52     	; 0x1238 <main+0x1be>
+    1204:	28 f4       	brcc	.+10     	; 0x1210 <main+0x196>
+    1206:	88 23       	and	r24, r24
+    1208:	41 f0       	breq	.+16     	; 0x121a <main+0x1a0>
+    120a:	81 30       	cpi	r24, 0x01	; 1
+    120c:	89 f0       	breq	.+34     	; 0x1230 <main+0x1b6>
+    120e:	2c c0       	rjmp	.+88     	; 0x1268 <main+0x1ee>
+    1210:	83 30       	cpi	r24, 0x03	; 3
+    1212:	11 f1       	breq	.+68     	; 0x1258 <main+0x1de>
+    1214:	84 30       	cpi	r24, 0x04	; 4
+    1216:	21 f1       	breq	.+72     	; 0x1260 <main+0x1e6>
+    1218:	27 c0       	rjmp	.+78     	; 0x1268 <main+0x1ee>
+		{
+			case SLEEP:
+				if(master_act) sys_state = STARTUP;
+    121a:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+    121e:	88 23       	and	r24, r24
+    1220:	21 f0       	breq	.+8      	; 0x122a <main+0x1b0>
+    1222:	81 e0       	ldi	r24, 0x01	; 1
+    1224:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+    1228:	22 c0       	rjmp	.+68     	; 0x126e <main+0x1f4>
+				else sys_state = SLEEP;
+    122a:	10 92 68 01 	sts	0x0168, r1	; 0x800168 <sys_state>
+    122e:	1f c0       	rjmp	.+62     	; 0x126e <main+0x1f4>
+				break;
+				
+			case STARTUP:
+				sys_state = Startup_Procedure();
+    1230:	52 dd       	rcall	.-1372   	; 0xcd6 <Startup_Procedure>
+    1232:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+				break;
+    1236:	1b c0       	rjmp	.+54     	; 0x126e <main+0x1f4>
+				
+			case ACTIVE:
+				if((!master_act)||(kill_act)) sys_state = KILLING;
+    1238:	80 91 67 01 	lds	r24, 0x0167	; 0x800167 <master_act>
+    123c:	88 23       	and	r24, r24
+    123e:	21 f0       	breq	.+8      	; 0x1248 <main+0x1ce>
+    1240:	80 91 66 01 	lds	r24, 0x0166	; 0x800166 <kill_act>
+    1244:	88 23       	and	r24, r24
+    1246:	21 f0       	breq	.+8      	; 0x1250 <main+0x1d6>
+    1248:	83 e0       	ldi	r24, 0x03	; 3
+    124a:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+    124e:	0f c0       	rjmp	.+30     	; 0x126e <main+0x1f4>
+				else sys_state = ACTIVE;
+    1250:	82 e0       	ldi	r24, 0x02	; 2
+    1252:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+    1256:	0b c0       	rjmp	.+22     	; 0x126e <main+0x1f4>
+				break;
+				
+			case KILLING:
+				sys_state = Kill_Procedure();
+    1258:	e4 dd       	rcall	.-1080   	; 0xe22 <Kill_Procedure>
+    125a:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+				break;
+    125e:	07 c0       	rjmp	.+14     	; 0x126e <main+0x1f4>
+				
+			case LOCKOUT:
+				sys_state = Lockout_Procedure();
+    1260:	57 de       	rcall	.-850    	; 0xf10 <Lockout_Procedure>
+    1262:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+				break;
+    1266:	03 c0       	rjmp	.+6      	; 0x126e <main+0x1f4>
+				
+			default:
+				sys_state = KILLING;
+    1268:	83 e0       	ldi	r24, 0x03	; 3
+    126a:	80 93 68 01 	sts	0x0168, r24	; 0x800168 <sys_state>
+				break;
+		}
+		
+		/******* Output HW processing ***********************************/
+		OUTDRV_ProcessLogic();
+    126e:	13 dc       	rcall	.-2010   	; 0xa96 <OUTDRV_ProcessLogic>
+		
+		/******* LED Control processing *********************************/
+		LEDDRV_Process();
+    1270:	a0 d9       	rcall	.-3264   	; 0x5b2 <LEDDRV_Process>
+		
+		/******* Wathcdog keep alive  ***********************************/
+		#ifdef WDT_ENABLED
+		wdt_reset();
+		#endif
+	}
+    1272:	77 cf       	rjmp	.-274    	; 0x1162 <main+0xe8>
+
+00001274 <__udivmodhi4>:
+    1274:	aa 1b       	sub	r26, r26
+    1276:	bb 1b       	sub	r27, r27
+    1278:	51 e1       	ldi	r21, 0x11	; 17
+    127a:	07 c0       	rjmp	.+14     	; 0x128a <__udivmodhi4_ep>
+
+0000127c <__udivmodhi4_loop>:
+    127c:	aa 1f       	adc	r26, r26
+    127e:	bb 1f       	adc	r27, r27
+    1280:	a6 17       	cp	r26, r22
+    1282:	b7 07       	cpc	r27, r23
+    1284:	10 f0       	brcs	.+4      	; 0x128a <__udivmodhi4_ep>
+    1286:	a6 1b       	sub	r26, r22
+    1288:	b7 0b       	sbc	r27, r23
+
+0000128a <__udivmodhi4_ep>:
+    128a:	88 1f       	adc	r24, r24
+    128c:	99 1f       	adc	r25, r25
+    128e:	5a 95       	dec	r21
+    1290:	a9 f7       	brne	.-22     	; 0x127c <__udivmodhi4_loop>
+    1292:	80 95       	com	r24
+    1294:	90 95       	com	r25
+    1296:	bc 01       	movw	r22, r24
+    1298:	cd 01       	movw	r24, r26
+    129a:	08 95       	ret
+
+0000129c <_exit>:
+    129c:	f8 94       	cli
+
+0000129e <__stop_program>:
+    129e:	ff cf       	rjmp	.-2      	; 0x129e <__stop_program>
